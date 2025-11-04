@@ -89,7 +89,7 @@ templ ItemList(items []Item) {
 }
 
 templ KitchenSink(name string, items []Item, alerts <-chan string, footer templ.Component) {
-	<!DOCTYPE html>
+	<!doctype html>
 	<html lang="en">
 		<head>
 			<meta charset="utf-8"/>
@@ -120,7 +120,7 @@ templ KitchenSink(name string, items []Item, alerts <-chan string, footer templ.
 				}
 				<section aria-live="polite">
 					@templ.Flush() {
-						<div id="live-updates">
+						<div id="live_updates">
 							for msg := range alerts {
 								<output class="alert">{ msg }</output>
 							}
