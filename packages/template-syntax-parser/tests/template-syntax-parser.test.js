@@ -15,6 +15,11 @@ const ERB = {
     "<%": " %>",
   },
 };
+const TEMPL = {
+  syntax: {
+    "{": "}",
+  },
+};
 
 describe("basic", () => {
   /**
@@ -63,5 +68,39 @@ describe("error", () => {
   });
   test("unclosed", () => {
     expect(() => parse("{{{ {{", HANDLEBAR)).toThrowError();
+  });
+});
+
+describe("nested", () => {
+  test("handlebar supports nested braces", () => {
+    const code = "{{ foo {{ bar }} baz }}";
+    expect(
+      parse(code, HANDLEBAR).syntax.map((s) => [s.open, s.close])
+    ).toStrictEqual([
+      [
+        [7, 9],
+        [14, 16],
+      ],
+      [
+        [0, 2],
+        [21, 23],
+      ],
+    ]);
+  });
+
+  test("templ supports nested braces", () => {
+    const code = "{ foo { bar } }";
+    expect(
+      parse(code, TEMPL).syntax.map((s) => [s.open, s.close])
+    ).toStrictEqual([
+      [
+        [6, 7],
+        [12, 13],
+      ],
+      [
+        [0, 1],
+        [14, 15],
+      ],
+    ]);
   });
 });
