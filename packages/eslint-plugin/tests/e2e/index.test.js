@@ -22,6 +22,7 @@ for (const testDir of testDirs) {
     expectOutputToMatchSource = true,
     languageOptions,
     configOverrides,
+    processor = undefined,
     rules,
   } = testConfig;
 
@@ -42,6 +43,7 @@ for (const testDir of testDirs) {
         },
         languageOptions || {}
       ),
+      ...(  processor ? { processor: processor } : {} ),
       rules,
     };
     if (configOverrides) {

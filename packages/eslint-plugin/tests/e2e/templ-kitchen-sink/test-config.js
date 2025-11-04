@@ -15,6 +15,7 @@ module.exports = {
       // templateEngineSyntax: parser.TEMPLATE_ENGINE_SYNTAX.TEMPL,
     },
   },
+  processor: '@html-eslint/templ',
   rules: {
     ...rules,
     "@html-eslint/attrs-newline": "off",
@@ -23,7 +24,6 @@ module.exports = {
     "@html-eslint/indent": "off",
     "@html-eslint/lowercase": "off",
     "@html-eslint/no-duplicate-attrs": "off",
-    "@html-eslint/no-extra-spacing-text": "off",
     "@html-eslint/quotes": "off",
     "@html-eslint/require-closing-tags": ["error", {"selfClosing": "always"}],
     "@html-eslint/require-open-graph-protocol": "off",
