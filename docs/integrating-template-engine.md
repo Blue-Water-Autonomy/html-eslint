@@ -92,6 +92,11 @@ parserOptions: {
 parserOptions: {
   templateEngineSyntax: TEMPLATE_ENGINE_SYNTAX.ERB;
 }
+
+// Templ integration
+parserOptions: {
+  templateEngineSyntax: TEMPLATE_ENGINE_SYNTAX.TEMPL;
+}
 ```
 
 ## Skip frontmatter
