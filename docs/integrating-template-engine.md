@@ -93,10 +93,8 @@ parserOptions: {
   templateEngineSyntax: TEMPLATE_ENGINE_SYNTAX.ERB;
 }
 
-// Templ integration
-parserOptions: {
-  templateEngineSyntax: TEMPLATE_ENGINE_SYNTAX.TEMPL;
-}
+// Templ integration (sets `templateEngineSyntax` and disables rules that conflict with `templ fmt`)
+extends: ["html/templ"]
 ```
 
 ## Skip frontmatter

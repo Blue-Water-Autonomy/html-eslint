@@ -3,6 +3,7 @@ const {
   recommendedRules,
   recommendedLegacyRules,
 } = require("./configs/recommended");
+const { templRules } = require("./configs/templ");
 const { HTMLLanguage } = require("./languages/html-language");
 const { name, version } = require("../package.json");
 const parser = require("@html-eslint/parser");
@@ -46,6 +47,15 @@ const plugin = {
       },
       rules: recommendedLegacyRules,
     },
+    templ: {
+      rules: templRules,
+      languageOptions: {
+        parser: parser,
+        parserOptions: {
+          templateEngineSyntax: parser.TEMPLATE_ENGINE_SYNTAX.TEMPL,
+        },
+      }
+    }
   },
 };
 

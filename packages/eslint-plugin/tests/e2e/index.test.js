@@ -16,12 +16,9 @@ for (const testDir of testDirs) {
   const testConfig = require(testConfigPath);
 
   const {
-    sourceFileName,
     fixedFileName,
-    expectNoMessages = true,
-    expectOutputToMatchSource = true,
+    sourceFileName,
     languageOptions,
-    configOverrides,
     processor = undefined,
     rules,
   } = testConfig;
@@ -35,7 +32,7 @@ for (const testDir of testDirs) {
   test(`e2e/${testName}`, () => {
     const config = {
       plugins: {
-        "@html-eslint": plugin,
+        html: plugin,
       },
       languageOptions: Object.assign(
         {
@@ -46,39 +43,16 @@ for (const testDir of testDirs) {
       ...(  processor ? { processor: processor } : {} ),
       rules,
     };
-    if (configOverrides) {
-      Object.assign(config, configOverrides);
-    }
 
     const linter = new eslint.Linter();
     const sourcePath = path.join(testPath, sourceFileName);
     const source = fs.readFileSync(sourcePath, { encoding: `utf8` });
+    const fixedPath = path.join(testPath, fixedFileName);
+    const expected = fs.readFileSync(fixedPath, { encoding: `utf8` });
 
-    const fixedPath =
-      fixedFileName !== undefined ? path.join(testPath, fixedFileName) : null;
-    const hasFixedFile = fixedPath ? fs.existsSync(fixedPath) : false;
-
-    if (hasFixedFile) {
-      if (!fixedPath) {
-        throw new Error(`Expected fixed file path for ${testName}`);
-      }
-      const expected = fs.readFileSync(fixedPath, { encoding: `utf8` });
-      const result = linter.verifyAndFix(source, config);
-      if (expectNoMessages) {
-        expect(JSON.stringify(result.messages, null, `\t`)).toEqual(`[]`);
-      }
-      expect(result.output).toEqual(expected);
-      return;
-    }
-
-    const messages = linter.verify(source, config);
-    if (expectNoMessages) {
-      expect(JSON.stringify(messages, null, `\t`)).toEqual(`[]`);
-    }
-
-    if (expectOutputToMatchSource) {
-      const fixResult = linter.verifyAndFix(source, config);
-      expect(fixResult.output).toEqual(source);
-    }
+    const result = linter.verifyAndFix(source, config);
+    expect(JSON.stringify(result.messages, null, `\t`)).toEqual(`[]`);
+    expect(result.output).toEqual(expected);
+    return;
   });
 }

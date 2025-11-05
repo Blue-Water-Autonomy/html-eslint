@@ -72,7 +72,7 @@ templ ItemList(items []Item) {
 					if item.Description != nil {
 						<p>{ *item.Description }</p>
 					}
-					<a href={ item.URL } target="_blank" rel="noopener">
+					<a href={ item.URL } rel="noopener" target="_blank">
 						View details
 					</a>
 					if len(item.Tags) > 0 {
@@ -93,15 +93,15 @@ templ KitchenSink(name string, items []Item, alerts <-chan string, footer templ.
 	<html lang="en">
 		<head>
 			<meta charset="utf-8"></meta>
-			<meta name="viewport" content="width=device-width, initial-scale=1"></meta>
-			<meta name="description" content="Fixture for kitchen sink templ lint coverage"></meta>
-			<meta property="og:url" content="https://canonical-url.com"></meta>
-			<meta property="og:type" content="video.movie"></meta>
-			<meta property="og:title" content="title"></meta>
-			<meta property="og:image" content="https://image.png"></meta>
+			<meta content="width=device-width, initial-scale=1" name="viewport"></meta>
+			<meta content="Fixture for kitchen sink templ lint coverage" name="description"></meta>
+			<meta content="https://canonical-url.com" property="og:url"></meta>
+			<meta content="video.movie" property="og:type"></meta>
+			<meta content="title" property="og:title"></meta>
+			<meta content="https://image.png" property="og:image"></meta>
 			<title>Templ Kitchen Sink</title>
-			<link rel="stylesheet" href="/assets/css/base.css"></link>
-			<script src="/assets/js/htmx.min.js" defer></script>
+			<link href="/assets/css/base.css" rel="stylesheet"></link>
+			<script defer src="/assets/js/htmx.min.js"></script>
 		</head>
 		<body class={ "kitchen-sink", stateClass(len(items)) } data-count={ fmt.Sprintf("%d", len(items)) }>
 			@PageHeader(name, len(items))
@@ -112,7 +112,7 @@ templ KitchenSink(name string, items []Item, alerts <-chan string, footer templ.
 						<a href="/items/new">Create your first item</a>
 					</section>
 				} else {
-					<section id="items" class="collection" hx-get="/items" hx-trigger="refresh" hx-swap="outerHTML">
+					<section id="items" class="collection" hx-get="/items" hx-swap="outerHTML" hx-trigger="refresh">
 						@ItemList(items)
 					</section>
 				}
