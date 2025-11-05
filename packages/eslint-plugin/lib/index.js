@@ -6,7 +6,7 @@ const {
 const { templRules } = require("./configs/templ");
 const { HTMLLanguage } = require("./languages/html-language");
 const { name, version } = require("../package.json");
-const parser = require("@html-eslint/parser");
+const parser = require("@blue-water-autonomy/html-eslint-parser");
 const templProcessor = require("./processors/templ");
 /**
  * @import { ESLint } from "eslint";

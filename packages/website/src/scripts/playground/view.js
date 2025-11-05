@@ -8,7 +8,7 @@ import "codemirror/mode/htmlmixed/htmlmixed.js";
 import "codemirror/mode/javascript/javascript.js";
 import "codemirror/addon/hint/show-hint.js";
 import "codemirror/addon/hint/show-hint.css";
-import rules from "@html-eslint/eslint-plugin/lib/rules";
+import rules from "@blue-water-autonomy/html-eslint-plugin/lib/rules";
 import CodeMirror from "codemirror";
 import {
   toMarker,

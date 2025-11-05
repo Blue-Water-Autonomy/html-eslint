@@ -35,12 +35,12 @@ async function makePackageJson({ fixtureName, eslintVersion, dir }) {
     packageManager: "yarn@4.9.1",
     devDependencies: {
       eslint: eslintVersion,
-      "@html-eslint/eslint-plugin": packageFileVersion("eslint-plugin"),
-      "@html-eslint/parser": packageFileVersion("parser"),
+      "@blue-water-autonomy/html-eslint-plugin": packageFileVersion("eslint-plugin"),
+      "@blue-water-autonomy/html-eslint-parser": packageFileVersion("parser"),
     },
     resolutions: {
-      "@html-eslint/template-parser": packageFileVersion("template-parser"),
-      "@html-eslint/template-syntax-parser": packageFileVersion(
+      "@blue-water-autonomy/html-eslint-template-parser": packageFileVersion("template-parser"),
+      "@blue-water-autonomy/html-eslint-template-syntax-parser": packageFileVersion(
         "template-syntax-parser"
       ),
     },

@@ -1,6 +1,6 @@
-const  htmlEslint = require("@html-eslint/eslint-plugin");
+const  htmlEslint = require("@blue-water-autonomy/html-eslint-plugin");
 const  stylistic = require("@stylistic/eslint-plugin");
-const  parser = require("@html-eslint/parser");
+const  parser = require("@blue-water-autonomy/html-eslint-parser");
 const  path =require("path");
 const  js = require("@eslint/js");
 const  { FlatCompat } = require("@eslint/eslintrc");

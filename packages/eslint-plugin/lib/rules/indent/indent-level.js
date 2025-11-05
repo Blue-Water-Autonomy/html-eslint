@@ -1,5 +1,5 @@
 /**
- * @import {AnyNode} from "@html-eslint/types";
+ * @import {AnyNode} from "@blue-water-autonomy/html-eslint-types";
  * @typedef {{ [key in AnyNode['type']]?: number}} IncLevelOptions
  * @typedef {(node: AnyNode) => number} GetIncreasingLevel
  */

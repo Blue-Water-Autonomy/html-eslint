@@ -1,13 +1,13 @@
 /**
  * @import {AST} from "eslint";
- * @import {Attribute, Tag, ScriptTag, StyleTag} from "@html-eslint/types";
+ * @import {Attribute, Tag, ScriptTag, StyleTag} from "@blue-water-autonomy/html-eslint-types";
  * @import {RuleModule} from "../types";
  *
  * @typedef {"single" | "double"} SingleOrQuoteOption
  * @typedef {{enforceTemplatedAttrValue: boolean}} ObjectOption
  */
 
-const { NODE_TYPES } = require("@html-eslint/parser");
+const { NODE_TYPES } = require("@blue-water-autonomy/html-eslint-parser");
 const { RULE_CATEGORY } = require("../constants");
 const { getSourceCode } = require("./utils/source-code");
 const { createVisitors } = require("./utils/visitors");

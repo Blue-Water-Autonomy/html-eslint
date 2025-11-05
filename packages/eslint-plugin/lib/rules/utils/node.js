@@ -1,10 +1,10 @@
 /**
- * @import {Attribute, Tag, ScriptTag, StyleTag, AnyNode, Text, CommentContent, Comment, AttributeValue, AttributeKey, AnyToken} from "@html-eslint/types";
+ * @import {Attribute, Tag, ScriptTag, StyleTag, AnyNode, Text, CommentContent, Comment, AttributeValue, AttributeKey, AnyToken} from "@blue-water-autonomy/html-eslint-types";
  * @import {Line, BaseNode} from "../../types";
  * @import {AST} from "eslint";
  */
 
-const { NODE_TYPES } = require("@html-eslint/parser");
+const { NODE_TYPES } = require("@blue-water-autonomy/html-eslint-parser");
 
 /**
  * @param {Tag | ScriptTag | StyleTag} node

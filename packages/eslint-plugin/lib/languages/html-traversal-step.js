@@ -1,6 +1,6 @@
 /**
  * @import {AST} from 'eslint';
- * @import {AnyHTMLNode} from '@html-eslint/types';
+ * @import {AnyHTMLNode} from '@blue-water-autonomy/html-eslint-types';
  */
 
 const { VisitNodeStep } = require("@eslint/plugin-kit");

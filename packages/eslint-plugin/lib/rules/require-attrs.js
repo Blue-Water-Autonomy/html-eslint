@@ -1,5 +1,5 @@
 /**
- * @import {Tag, ScriptTag, StyleTag, Attribute} from "@html-eslint/types";
+ * @import {Tag, ScriptTag, StyleTag, Attribute} from "@blue-water-autonomy/html-eslint-types";
  * @import {RuleModule, ReportFixFunction} from "../types";
  *
  * @typedef {Object} Option
@@ -10,7 +10,7 @@
  *
  */
 
-const { NODE_TYPES } = require("@html-eslint/parser");
+const { NODE_TYPES } = require("@blue-water-autonomy/html-eslint-parser");
 const { RULE_CATEGORY } = require("../constants");
 const { createVisitors } = require("./utils/visitors");
 const { getRuleUrl } = require("./utils/rule");

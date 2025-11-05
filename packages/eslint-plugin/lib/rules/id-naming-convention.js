@@ -1,5 +1,5 @@
 /**
- * @import {Tag, ScriptTag, StyleTag} from "@html-eslint/types";
+ * @import {Tag, ScriptTag, StyleTag} from "@blue-water-autonomy/html-eslint-types";
  * @import {RuleModule} from "../types";
  *
  * @typedef {"camelCase" | "snake_case" | "PascalCase" | "kebab-case" | "regex"} Option1

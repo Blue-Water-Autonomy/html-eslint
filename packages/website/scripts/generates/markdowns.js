@@ -7,7 +7,7 @@ const {
 const {
   writeFileSync
 } = require("fs");
-const rulesRecord = require("@html-eslint/eslint-plugin/lib/rules");
+const rulesRecord = require("@blue-water-autonomy/html-eslint-plugin/lib/rules");
 const prettier = require("prettier");
 
 async function generateRulesMarkdown() {

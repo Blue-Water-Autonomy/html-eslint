@@ -1,5 +1,5 @@
 /**
- * @import {Tag, AnyNode} from "@html-eslint/types";
+ * @import {Tag, AnyNode} from "@blue-water-autonomy/html-eslint-types";
  * @import {RuleModule} from "../types";
  * @typedef {string[]} Option
  */

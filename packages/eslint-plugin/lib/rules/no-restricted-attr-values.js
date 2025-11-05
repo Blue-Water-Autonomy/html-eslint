@@ -1,5 +1,5 @@
 /**
- * @import {StyleTag, Attribute, Tag, ScriptTag } from "@html-eslint/types";
+ * @import {StyleTag, Attribute, Tag, ScriptTag } from "@blue-water-autonomy/html-eslint-types";
  * @import {RuleModule} from "../types";
  * @typedef {{attrPatterns: string[], attrValuePatterns: string[], message?: string}[]} Options
  */

@@ -1,6 +1,6 @@
 /**
  * @import {RuleModule} from "../types";
- * @import {CommentContent, Text} from "@html-eslint/types";
+ * @import {CommentContent, Text} from "@blue-water-autonomy/html-eslint-types";
  */
 
 const { parseTemplateLiteral } = require("./utils/template-literal");

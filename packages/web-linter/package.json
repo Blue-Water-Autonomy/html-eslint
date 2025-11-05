@@ -1,6 +1,6 @@
 {
-  "name": "@html-eslint/web-linter",
-  "version": "0.47.0",
+  "name": "@blue-water-autonomy/html-eslint-web-linter",
+  "version": "0.47.1",
   "description": "",
   "private": true,
   "main": "out/output.js",

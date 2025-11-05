@@ -12,9 +12,9 @@
     "sitemap": "node ./scripts/sitemap"
   },
   "dependencies": {
-    "@html-eslint/eslint-plugin": "^0.47.1",
-    "@html-eslint/parser": "^0.47.1",
-    "@html-eslint/web-linter": "^0.47.0",
+    "@blue-water-autonomy/html-eslint-parser": "^0.47.1",
+    "@blue-water-autonomy/html-eslint-plugin": "^0.47.1",
+    "@blue-water-autonomy/html-eslint-web-linter": "^0.47.1",
     "@html-kit/html": "^0.0.4",
     "codemirror": "^5.58.3"
   },

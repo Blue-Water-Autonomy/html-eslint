@@ -1,10 +1,10 @@
 import {
   parseForESLint
-} from "@html-eslint/parser";
-import rules from "@html-eslint/eslint-plugin/lib/rules";
+} from "@blue-water-autonomy/html-eslint-parser";
+import rules from "@blue-water-autonomy/html-eslint-plugin/lib/rules";
 import {
   Linter as WebLinter
-} from "@html-eslint/web-linter";
+} from "@blue-water-autonomy/html-eslint-web-linter";
 import {
   Language
 } from "./language";
@@ -78,7 +78,7 @@ export class Linter {
    */
   _defineParser() {
     this._linter.defineParser(
-      "@html-eslint/parser",
+      "@blue-water-autonomy/html-eslint-parser",
       {
         parseForESLint(code, options) {
           return parseForESLint(code, options);
@@ -95,7 +95,7 @@ export class Linter {
     if (language.value === "javascript") {
       return undefined;
     }
-    return "@html-eslint/parser";
+    return "@blue-water-autonomy/html-eslint-parser";
   }
 
   /**

@@ -1,10 +1,10 @@
 /**
  * @import ESHtmlParser from "es-html-parser";
  * @import {ParserOptions} from "./types"
- * @import {TemplateSyntax} from "@html-eslint/template-syntax-parser";
+ * @import {TemplateSyntax} from "@blue-water-autonomy/html-eslint-template-syntax-parser";
  */
 
-const templateSyntaxParser = require("@html-eslint/template-syntax-parser");
+const templateSyntaxParser = require("@blue-water-autonomy/html-eslint-template-syntax-parser");
 const TEMPLATE_ENGINE_SYNTAX = require("./template-engine-syntax-preset");
 const { parseFrontmatterContent } = require("./frontmatter");
 /**

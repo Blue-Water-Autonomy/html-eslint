@@ -1,5 +1,5 @@
 /**
- * @import {AnyNode, Tag, TemplateText, TemplateLiteral, OpenTemplate, CloseTemplate, ScriptTag, StyleTag, Text} from "@html-eslint/types";
+ * @import {AnyNode, Tag, TemplateText, TemplateLiteral, OpenTemplate, CloseTemplate, ScriptTag, StyleTag, Text} from "@blue-water-autonomy/html-eslint-types";
  * @import {Line, RuleListener, Context, RuleModule} from "../../types";
  * @import {AST} from "eslint";
  *
@@ -21,7 +21,7 @@
  */
 
 const { parseTemplateLiteral } = require("../utils/template-literal");
-const { NODE_TYPES } = require("@html-eslint/parser");
+const { NODE_TYPES } = require("@blue-water-autonomy/html-eslint-parser");
 const { RULE_CATEGORY } = require("../../constants");
 const {
   splitToLineNodes,

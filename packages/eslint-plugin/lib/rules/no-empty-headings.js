@@ -1,5 +1,5 @@
 /**
- * @import {Tag, Text} from "@html-eslint/types";
+ * @import {Tag, Text} from "@blue-water-autonomy/html-eslint-types";
  * @import {RuleModule} from "../types";
  */
 

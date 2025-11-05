@@ -1,6 +1,6 @@
 /**
  * @import {RuleModule} from "../types";
- * @import {Tag, AnyNode} from "@html-eslint/types";
+ * @import {Tag, AnyNode} from "@blue-water-autonomy/html-eslint-types";
  */
 
 const { RULE_CATEGORY } = require("../constants");

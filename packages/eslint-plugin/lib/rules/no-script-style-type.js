@@ -1,6 +1,6 @@
 /**
  * @import {RuleModule} from "../types";
- * @import {StyleTag, Tag, ScriptTag} from "@html-eslint/types";
+ * @import {StyleTag, Tag, ScriptTag} from "@blue-water-autonomy/html-eslint-types";
  */
 
 const { RULE_CATEGORY } = require("../constants");

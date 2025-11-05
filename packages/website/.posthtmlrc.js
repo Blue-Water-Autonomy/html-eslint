@@ -1,6 +1,6 @@
 const { resolve } = require("path");
 const { readFileSync } = require("fs");
-const rulesRecord = require("@html-eslint/eslint-plugin/lib/rules");
+const rulesRecord = require("@blue-water-autonomy/html-eslint-plugin/lib/rules");
 
 const rules = {
   ["Best Practice"]: [],

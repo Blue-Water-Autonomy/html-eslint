@@ -1,5 +1,5 @@
 /**
- * @import {Attribute, OpenScriptTagStart, OpenTagStart, OpenStyleTagStart, Tag, StyleTag, ScriptTag, AnyNode} from "@html-eslint/types";
+ * @import {Attribute, OpenScriptTagStart, OpenTagStart, OpenStyleTagStart, Tag, StyleTag, ScriptTag, AnyNode} from "@blue-water-autonomy/html-eslint-types";
  * @import {RuleModule} from "../types";
  * @typedef {Object} Option
  * @property {boolean} [Option.disallowInAssignment]

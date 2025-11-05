@@ -1,6 +1,6 @@
 /**
  * @import {RuleModule, SuggestionReportDescriptor} from "../types";
- * @import {AttributeValue} from "@html-eslint/types";
+ * @import {AttributeValue} from "@blue-water-autonomy/html-eslint-types";
  */
 
 const { RULE_CATEGORY } = require("../constants");

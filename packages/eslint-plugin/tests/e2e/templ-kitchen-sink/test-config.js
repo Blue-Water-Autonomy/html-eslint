@@ -1,4 +1,4 @@
-const parser = require("@html-eslint/parser");
+const parser = require("@blue-water-autonomy/html-eslint-parser");
 
 const plugin = require("../../../lib/index.js");
 
