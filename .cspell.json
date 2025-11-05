@@ -63,6 +63,7 @@
     "nodownload",
     "nofullscreen",
     "controlslist",
-    "describedby"
+    "describedby",
+    "templ"
   ]
 }
