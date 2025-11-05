@@ -63,7 +63,9 @@ templ ItemList(items []Item) {
 			<li
 				id={ fmt.Sprintf("item-%s", item.ID) }
 				class={ "item", statusClass(item.Active) }
-				data-index={ fmt.Sprintf("%d", index) }
+				if index != nil {
+					data-index={ fmt.Sprintf("%d", index) }
+				}
 			>
 				<article class="card">
 					<header>
