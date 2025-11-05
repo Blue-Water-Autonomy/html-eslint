@@ -40,6 +40,7 @@ templ hello(message string) {
             message: "test",
             line: 3,
             column: 5,
+            severity: 2,
           },
         ],
       ],
