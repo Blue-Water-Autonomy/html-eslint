@@ -16,10 +16,9 @@ EOF
 echo '.npmrc written for GitHub Packages.'
 
 cd "${repo_dir}"
-version="$(node -p "require('./lerna.json').version")"
 yarn lerna publish \
   --ignore "@blue-water-autonomy/html-eslint-cli" \
   --ignore integration-test \
   --ignore "@blue-water-autonomy/html-eslint-web-linter" \
   --ignore website \
-  --registry="${registry}" "$version"
+  --registry="${registry}" from-package
