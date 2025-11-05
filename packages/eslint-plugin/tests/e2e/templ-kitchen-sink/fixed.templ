@@ -65,6 +65,8 @@ templ ItemList(items []Item) {
 				class={ "item", statusClass(item.Active) }
 				if index != nil {
 					data-index={ fmt.Sprintf("%d", index) }
+				} else {
+					data-index="unknown"
 				}
 			>
 				<article class="card">
