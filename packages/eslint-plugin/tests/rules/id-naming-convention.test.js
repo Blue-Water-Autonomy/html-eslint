@@ -1,6 +1,8 @@
 const createRuleTester = require("../rule-tester");
 const rule = require("../../lib/rules/id-naming-convention");
-const { TEMPLATE_ENGINE_SYNTAX } = require("@blue-water-autonomy/html-eslint-parser");
+const {
+  TEMPLATE_ENGINE_SYNTAX,
+} = require("@blue-water-autonomy/html-eslint-parser");
 
 const ruleTester = createRuleTester();
 const templateRuleTester = createRuleTester("espree");

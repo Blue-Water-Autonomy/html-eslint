@@ -54,8 +54,8 @@ const plugin = {
         parserOptions: {
           templateEngineSyntax: parser.TEMPLATE_ENGINE_SYNTAX.TEMPL,
         },
-      }
-    }
+      },
+    },
   },
 };
 

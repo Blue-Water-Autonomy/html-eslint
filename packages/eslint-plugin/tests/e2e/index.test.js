@@ -40,7 +40,7 @@ for (const testDir of testDirs) {
         },
         languageOptions || {}
       ),
-      ...(  processor ? { processor: processor } : {} ),
+      ...(processor ? { processor: processor } : {}),
       rules,
     };
 

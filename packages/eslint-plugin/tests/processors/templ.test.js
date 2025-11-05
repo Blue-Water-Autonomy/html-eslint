@@ -14,7 +14,7 @@ templ hello(message string) {
 
     const blocks = processor.preprocess(source, "hello.templ");
     expect(blocks).toHaveLength(1);
-    expect(blocks[0].trim()).toBe('<div>{ message }</div>');
+    expect(blocks[0].trim()).toBe("<div>{ message }</div>");
 
     // Clean up metadata cache
     processor.postprocess([[]], "hello.templ");

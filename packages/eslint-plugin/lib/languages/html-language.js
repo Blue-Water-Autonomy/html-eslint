@@ -4,7 +4,10 @@
  * @import { AST } from "eslint";
  */
 
-const { visitorKeys, parseForESLint } = require("@blue-water-autonomy/html-eslint-parser");
+const {
+  visitorKeys,
+  parseForESLint,
+} = require("@blue-water-autonomy/html-eslint-parser");
 const { HTMLSourceCode } = require("./html-source-code");
 
 /**

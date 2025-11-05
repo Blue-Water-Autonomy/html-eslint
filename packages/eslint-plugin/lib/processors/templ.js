@@ -130,8 +130,7 @@ function preprocess(code, filename) {
    * @type {{ startIndex: number; startLine: number; startColumn: number }[]}
    */
   const metadata = [];
-  const templPattern =
-    /\btempl\s+[A-Za-z_][A-Za-z0-9_]*\s*\([^)]*\)\s*{/g;
+  const templPattern = /\btempl\s+[A-Za-z_][A-Za-z0-9_]*\s*\([^)]*\)\s*{/g;
 
   let match;
   while ((match = templPattern.exec(code))) {

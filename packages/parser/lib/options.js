@@ -140,8 +140,12 @@ function transformTemplTemplateInfos(code, infos) {
     const isMultiline = /[\r\n]/.test(inner);
 
     if (isMultiline) {
-      adjusted.push(/** @type {[number, number]} */ ([info.open[0], info.open[1]]));
-      adjusted.push(/** @type {[number, number]} */ ([info.close[0], info.close[1]]));
+      adjusted.push(
+        /** @type {[number, number]} */ ([info.open[0], info.open[1]])
+      );
+      adjusted.push(
+        /** @type {[number, number]} */ ([info.close[0], info.close[1]])
+      );
       continue;
     }
 
