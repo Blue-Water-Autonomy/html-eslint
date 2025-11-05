@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+repo_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+registry="https://npm.pkg.github.com"
+if ! token="$(gh auth token)"; then
+  echo "Error: Failed to get GitHub token. Please ensure you are logged in with 'gh auth login'." >&2
+  exit 1
+fi
+
+cat > "${repo_dir}/.npmrc" <<EOF
+@Blue-Water-Autonomy:registry=${registry}
+//npm.pkg.github.com/:_authToken=${token}
+EOF
+
+echo '.npmrc written for GitHub Packages.'
+
+cd "${repo_dir}"
+version="$(node -p "require('./lerna.json').version")"
+yarn lerna publish --ignore "@blue-water-autonomy/html-eslint-cli" --registry="${registry}" "$version"

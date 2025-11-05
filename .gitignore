@@ -27,3 +27,5 @@ packages/template-parser/types
 packages/parser/types
 packages/eslint-plugin/types
 CLAUDE.md
+
+/.npmrc
