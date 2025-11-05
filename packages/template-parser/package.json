@@ -37,5 +37,6 @@
     "eslint": "^9.19.0",
     "espree": "^10.3.0",
     "globals": "^15.12.0"
-  }
+  },
+  "gitHead": "fb2e83bd9bad0f73e813f6198b8972d0f44a831b"
 }
