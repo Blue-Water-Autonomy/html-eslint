@@ -1,5 +1,4 @@
 const parser = require("@blue-water-autonomy/html-eslint-parser");
-
 const plugin = require("../../../lib/index.js");
 
 const allRules = Object.fromEntries(
@@ -7,14 +6,12 @@ const allRules = Object.fromEntries(
 );
 
 module.exports = {
-  sourceFileName: `source.templ`,
-  fixedFileName: `fixed.templ`,
+  sourceFileName: `source.html`,
+  fixedFileName: `fixed.html`,
   languageOptions: {
-    templateEngineSyntax: parser.TEMPLATE_ENGINE_SYNTAX.TEMPL,
+    templateEngineSyntax: parser.TEMPLATE_ENGINE_SYNTAX.GO_HTML_TEMPLATE,
   },
-  processor: "html/templ",
   rules: {
     ...allRules,
-    ...plugin.configs.templ.rules,
   },
 };

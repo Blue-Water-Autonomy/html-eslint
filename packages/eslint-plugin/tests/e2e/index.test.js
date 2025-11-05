@@ -3,7 +3,6 @@ const eslint = require(`eslint`);
 const fs = require(`fs`);
 
 const plugin = require(`@blue-water-autonomy/html-eslint-plugin`);
-const parser = require(`@blue-water-autonomy/html-eslint-parser`);
 
 const testDirs = fs
   .readdirSync(__dirname, { withFileTypes: true })
@@ -34,12 +33,8 @@ for (const testDir of testDirs) {
       plugins: {
         html: plugin,
       },
-      languageOptions: Object.assign(
-        {
-          parser,
-        },
-        languageOptions || {}
-      ),
+      language: 'html/html',
+      languageOptions: languageOptions || {},
       ...(processor ? { processor: processor } : {}),
       rules,
     };

@@ -1,0 +1,19 @@
+{{ define "container_select.html" }}
+<label for="container_select">Choose one</label>
+<select
+    id="container_select"
+    class="d-select block w-full"
+    hx-get="{{ .Query.hx_get }}"
+    hx-push-url="true"
+    hx-swap="innerHTML"
+    hx-target="#content"
+    hx-trigger="change"
+    name="container_id"
+>
+    {{ range .Data.Options }}
+    <option value="{{ . }}" {{ if eq . $.Data.SelectedOption }}selected{{ end }}>
+        {{ . }}
+    </option>
+    {{ end }}
+</select>
+{{ end }}
