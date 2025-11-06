@@ -17,8 +17,7 @@ echo '.npmrc written for GitHub Packages.'
 
 cd "${repo_dir}"
 yarn lerna publish \
+  --no-private \
   --ignore "@blue-water-autonomy/html-eslint-cli" \
-  --ignore integration-test \
-  --ignore "@blue-water-autonomy/html-eslint-web-linter" \
-  --ignore website \
-  --registry="${registry}" from-package
+  --preid 'bwa' \
+  --registry="${registry}" prerelease
