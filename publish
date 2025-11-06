@@ -7,15 +7,12 @@ if ! token="$(gh auth token)"; then
   echo "Error: Failed to get GitHub token. Please ensure you are logged in with 'gh auth login'." >&2
   exit 1
 fi
-# For `.yarnrc.yml`
-export NPM_AUTH_TOKEN="${token}"
-echo '
+cat > "$HOME/.yarnrc.yml" <<EOF
 npmScopes:
   blue-water-autonomy:
     npmRegistryServer: "https://npm.pkg.github.com"
-    npmAuthToken: "${NPM_AUTH_TOKEN}"
-' >> "${repo_dir}/.yarnrc.yml"
-trap "git checkout -- \"${repo_dir}/.yarnrc.yml\"" EXIT
+    npmAuthToken: "${token}"
+EOF
 
 cat > "${repo_dir}/.npmrc" <<EOF
 @blue-water-autonomy:registry=${registry}
