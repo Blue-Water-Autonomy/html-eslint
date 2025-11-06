@@ -20,11 +20,11 @@ version="$(jq --raw-output '.version' "${repo_dir}/lerna.json")"
 args=()
 bump="from-package"
 if npm show @blue-water-autonomy/html-eslint-plugin@"${version}"; then
-  echo "Version ${version} does not exist in the registry, publishing it"
-else
   echo "Version ${version} already exists in the registry, publishing a pre-release"
   args+=('--preid' 'bwa')
   bump="prerelease"
+else
+  echo "Version ${version} does not exist in the registry, publishing it"
 fi
 
 cd "${repo_dir}"
