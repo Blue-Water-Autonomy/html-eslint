@@ -1,6 +1,6 @@
 {
   "name": "@blue-water-autonomy/html-eslint-template-syntax-parser",
-  "version": "0.47.1",
+  "version": "0.47.2-bwa.0",
   "description": "Parse template syntax",
   "author": "yeonjuan",
   "homepage": "https://github.com/yeonjuan/html-eslint#readme",
@@ -28,7 +28,7 @@
     "url": "https://github.com/yeonjuan/html-eslint/issues"
   },
   "dependencies": {
-    "@blue-water-autonomy/html-eslint-types": "^0.47.1"
+    "@blue-water-autonomy/html-eslint-types": "^0.47.2-bwa.0"
   },
   "devDependencies": {
     "eslint": "^9.19.0",
