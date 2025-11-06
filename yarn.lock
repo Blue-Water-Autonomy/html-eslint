@@ -418,25 +418,51 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@blue-water-autonomy/html-eslint-parser@npm:^0.47.1, @blue-water-autonomy/html-eslint-parser@workspace:packages/parser":
-  version: 0.0.0-use.local
-  resolution: "@blue-water-autonomy/html-eslint-parser@workspace:packages/parser"
+"@blue-water-autonomy/html-eslint-parser@npm:^0.47.1":
+  version: 0.47.1
+  resolution: "@blue-water-autonomy/html-eslint-parser@npm:0.47.1::__archiveUrl=https%3A%2F%2Fnpm.pkg.github.com%2Fdownload%2F%40blue-water-autonomy%2Fhtml-eslint-parser%2F0.47.1%2F907005fbe52f3eaf3bd33453b451eb86c65bf90c"
   dependencies:
     "@blue-water-autonomy/html-eslint-template-syntax-parser": "npm:^0.47.1"
     "@blue-water-autonomy/html-eslint-types": "npm:^0.47.1"
+    es-html-parser: "npm:0.3.1"
+  checksum: 10c0/4bcc94b44741ca07b648e2f63b65964cd38b8e3de276884f4d0d33b3d58f4b41b23a670f42f86686cb3a9f1fd8daaf09a0f260e65c415c30104aac379a0f9b57
+  languageName: node
+  linkType: hard
+
+"@blue-water-autonomy/html-eslint-parser@npm:^0.47.2-bwa.0, @blue-water-autonomy/html-eslint-parser@workspace:packages/parser":
+  version: 0.0.0-use.local
+  resolution: "@blue-water-autonomy/html-eslint-parser@workspace:packages/parser"
+  dependencies:
+    "@blue-water-autonomy/html-eslint-template-syntax-parser": "npm:^0.47.2-bwa.0"
+    "@blue-water-autonomy/html-eslint-types": "npm:^0.47.2-bwa.0"
     es-html-parser: "npm:0.3.1"
     typescript: "npm:^5.8.3"
   languageName: unknown
   linkType: soft
 
-"@blue-water-autonomy/html-eslint-plugin@npm:^0.47.1, @blue-water-autonomy/html-eslint-plugin@workspace:packages/eslint-plugin":
-  version: 0.0.0-use.local
-  resolution: "@blue-water-autonomy/html-eslint-plugin@workspace:packages/eslint-plugin"
+"@blue-water-autonomy/html-eslint-plugin@npm:^0.47.1":
+  version: 0.47.1
+  resolution: "@blue-water-autonomy/html-eslint-plugin@npm:0.47.1::__archiveUrl=https%3A%2F%2Fnpm.pkg.github.com%2Fdownload%2F%40blue-water-autonomy%2Fhtml-eslint-plugin%2F0.47.1%2F99dd7a8d0b6e3e73bb44efee45ee83bb603a092c"
   dependencies:
     "@blue-water-autonomy/html-eslint-parser": "npm:^0.47.1"
     "@blue-water-autonomy/html-eslint-template-parser": "npm:^0.47.1"
     "@blue-water-autonomy/html-eslint-template-syntax-parser": "npm:^0.47.1"
     "@blue-water-autonomy/html-eslint-types": "npm:^0.47.1"
+    "@eslint/plugin-kit": "npm:^0.3.1"
+  peerDependencies:
+    eslint: ^8.0.0 || ^9.0.0
+  checksum: 10c0/113acdbed57abfb348ad7e869a53027b76590be931ebe1544b43acd751f626faf467bc7cc81b0e19b73aa5f6f2daddbf9cae25972f1788530ea7eac882248801
+  languageName: node
+  linkType: hard
+
+"@blue-water-autonomy/html-eslint-plugin@workspace:packages/eslint-plugin":
+  version: 0.0.0-use.local
+  resolution: "@blue-water-autonomy/html-eslint-plugin@workspace:packages/eslint-plugin"
+  dependencies:
+    "@blue-water-autonomy/html-eslint-parser": "npm:^0.47.2-bwa.0"
+    "@blue-water-autonomy/html-eslint-template-parser": "npm:^0.47.2-bwa.0"
+    "@blue-water-autonomy/html-eslint-template-syntax-parser": "npm:^0.47.2-bwa.0"
+    "@blue-water-autonomy/html-eslint-types": "npm:^0.47.2-bwa.0"
     "@eslint/core": "npm:^0.14.0"
     "@eslint/plugin-kit": "npm:^0.3.1"
     "@types/estree": "npm:^0.0.47"
@@ -449,11 +475,21 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@blue-water-autonomy/html-eslint-template-parser@npm:^0.47.1, @blue-water-autonomy/html-eslint-template-parser@workspace:packages/template-parser":
+"@blue-water-autonomy/html-eslint-template-parser@npm:^0.47.1":
+  version: 0.47.1
+  resolution: "@blue-water-autonomy/html-eslint-template-parser@npm:0.47.1::__archiveUrl=https%3A%2F%2Fnpm.pkg.github.com%2Fdownload%2F%40blue-water-autonomy%2Fhtml-eslint-template-parser%2F0.47.1%2F9af95b4bea1e446ee1c628266ac4b9bb7b391b2e"
+  dependencies:
+    "@blue-water-autonomy/html-eslint-types": "npm:^0.47.1"
+    es-html-parser: "npm:0.3.1"
+  checksum: 10c0/3556776a338c84dd2d23690000d7aaea4724a8468cd778f8dbfcfcc0a91195637614ab0e2a5f92256b0f6df890355e4c701badadb601bbb2cde9b4f37fb7a386
+  languageName: node
+  linkType: hard
+
+"@blue-water-autonomy/html-eslint-template-parser@npm:^0.47.2-bwa.0, @blue-water-autonomy/html-eslint-template-parser@workspace:packages/template-parser":
   version: 0.0.0-use.local
   resolution: "@blue-water-autonomy/html-eslint-template-parser@workspace:packages/template-parser"
   dependencies:
-    "@blue-water-autonomy/html-eslint-types": "npm:^0.47.1"
+    "@blue-water-autonomy/html-eslint-types": "npm:^0.47.2-bwa.0"
     "@types/espree": "npm:^10.1.0"
     "@types/estree": "npm:^0.0.47"
     es-html-parser: "npm:0.3.1"
@@ -463,17 +499,37 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@blue-water-autonomy/html-eslint-template-syntax-parser@npm:^0.47.1, @blue-water-autonomy/html-eslint-template-syntax-parser@workspace:packages/template-syntax-parser":
+"@blue-water-autonomy/html-eslint-template-syntax-parser@npm:^0.47.1":
+  version: 0.47.1
+  resolution: "@blue-water-autonomy/html-eslint-template-syntax-parser@npm:0.47.1::__archiveUrl=https%3A%2F%2Fnpm.pkg.github.com%2Fdownload%2F%40blue-water-autonomy%2Fhtml-eslint-template-syntax-parser%2F0.47.1%2Ff67e7d9c2ac7dbee39c0913c331a586ab48a5bcd"
+  dependencies:
+    "@blue-water-autonomy/html-eslint-types": "npm:^0.47.1"
+  checksum: 10c0/bdcab744dd1e89de5a5767820cf931d0adfdcba4216b180bbc8d2d3d7359686574a99f15b525661fbcfdcc8d5cb68375cd97fa85f6c6fffe502f961604ecbc9f
+  languageName: node
+  linkType: hard
+
+"@blue-water-autonomy/html-eslint-template-syntax-parser@npm:^0.47.2-bwa.0, @blue-water-autonomy/html-eslint-template-syntax-parser@workspace:packages/template-syntax-parser":
   version: 0.0.0-use.local
   resolution: "@blue-water-autonomy/html-eslint-template-syntax-parser@workspace:packages/template-syntax-parser"
   dependencies:
-    "@blue-water-autonomy/html-eslint-types": "npm:^0.47.1"
+    "@blue-water-autonomy/html-eslint-types": "npm:^0.47.2-bwa.0"
     eslint: "npm:^9.19.0"
     globals: "npm:^15.12.0"
   languageName: unknown
   linkType: soft
 
-"@blue-water-autonomy/html-eslint-types@npm:^0.47.1, @blue-water-autonomy/html-eslint-types@workspace:packages/types":
+"@blue-water-autonomy/html-eslint-types@npm:^0.47.1":
+  version: 0.47.1
+  resolution: "@blue-water-autonomy/html-eslint-types@npm:0.47.1::__archiveUrl=https%3A%2F%2Fnpm.pkg.github.com%2Fdownload%2F%40blue-water-autonomy%2Fhtml-eslint-types%2F0.47.1%2Fbeeabd422fb5c74f7b13e1d0703e51082eac07af"
+  dependencies:
+    "@types/estree": "npm:^1.0.6"
+    es-html-parser: "npm:0.3.1"
+    eslint: "npm:^9.19.0"
+  checksum: 10c0/ab42da3de15f07ae8e7b8d537427ef77d9160da8e53013895b27549f6b0518893452a9f0e7c702b83108c7a0962318cbb97d6e76674a24478858c366183138d3
+  languageName: node
+  linkType: hard
+
+"@blue-water-autonomy/html-eslint-types@npm:^0.47.2-bwa.0, @blue-water-autonomy/html-eslint-types@workspace:packages/types":
   version: 0.0.0-use.local
   resolution: "@blue-water-autonomy/html-eslint-types@workspace:packages/types"
   dependencies:

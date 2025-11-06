@@ -9,6 +9,13 @@ if ! token="$(gh auth token)"; then
 fi
 # For `.yarnrc.yml`
 export NPM_AUTH_TOKEN="${token}"
+echo '
+npmScopes:
+  blue-water-autonomy:
+    npmRegistryServer: "https://npm.pkg.github.com"
+    npmAuthToken: "${NPM_AUTH_TOKEN}"
+' >> "${repo_dir}/.yarnrc.yml"
+trap "git checkout -- \"${repo_dir}/.yarnrc.yml\"" EXIT
 
 cat > "${repo_dir}/.npmrc" <<EOF
 @blue-water-autonomy:registry=${registry}
