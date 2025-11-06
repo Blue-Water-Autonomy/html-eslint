@@ -9,7 +9,7 @@ if ! token="$(gh auth token)"; then
 fi
 
 cat > "${repo_dir}/.npmrc" <<EOF
-@Blue-Water-Autonomy:registry=${registry}
+@blue-water-autonomy:registry=${registry}
 //npm.pkg.github.com/:_authToken=${token}
 EOF
 
