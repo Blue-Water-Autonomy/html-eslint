@@ -29,3 +29,4 @@ packages/eslint-plugin/types
 CLAUDE.md
 
 /.npmrc
+/lerna-debug.log
