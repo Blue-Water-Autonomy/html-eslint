@@ -15,9 +15,21 @@ EOF
 
 echo '.npmrc written for GitHub Packages.'
 
+version="$(jq --raw-output '.version' "${repo_dir}/lerna.json")"
+
+args=()
+bump="from-package"
+if npm show @blue-water-autonomy/html-eslint-plugin@"${version}"; then
+  echo "Version ${version} does not exist in the registry, publishing it"
+else
+  echo "Version ${version} already exists in the registry, publishing a pre-release"
+  args+=('--preid' 'bwa')
+  bump="prerelease"
+fi
+
 cd "${repo_dir}"
 yarn lerna publish \
   --no-private \
   --ignore "@blue-water-autonomy/html-eslint-cli" \
-  --preid 'bwa' \
-  --registry="${registry}" prerelease
+  "${args[@]}" \
+  --registry="${registry}" "$bump"
