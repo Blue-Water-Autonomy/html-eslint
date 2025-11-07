@@ -11,6 +11,7 @@ const ERB = {
 };
 const TEMPL = {
   "{": "}",
+  "{{": "}}",
 };
 const GO_HTML_TEMPLATE = {
   "{{": "}}",
