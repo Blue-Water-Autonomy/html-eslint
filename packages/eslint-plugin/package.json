@@ -1,6 +1,6 @@
 {
   "name": "@blue-water-autonomy/html-eslint-plugin",
-  "version": "0.47.2-bwa.1",
+  "version": "0.47.2-bwa.2",
   "type": "commonjs",
   "description": "ESLint plugin for HTML",
   "author": "yeonjuan",
