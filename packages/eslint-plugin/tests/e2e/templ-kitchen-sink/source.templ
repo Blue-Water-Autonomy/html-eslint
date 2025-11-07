@@ -135,6 +135,16 @@ templ KitchenSink(name string, items []Item, alerts <-chan string, footer templ.
 						</div>
 					}
 				</section>
+				{{ onChange := fmt.Sprintf("htmx.ajax('PUT', `/api/thing/%s/${this.value}/set-delay`, {swap: 'none'})", thing.Name) }}
+				<label>
+					Delay (seconds):
+					<select
+						onchange={ templ.ComponentScript{Call: onChange} }
+					>
+						<option value="0" selected?={ thing.Delay == 0 }>0</option>
+						<option value="1" selected?={ thing.Delay == 1 }>1</option>
+					</select>
+				</label>
 			</main>
 			<footer role="contentinfo">
 				@footer

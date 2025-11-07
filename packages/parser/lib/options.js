@@ -150,7 +150,27 @@ function transformTemplTemplateInfos(code, infos) {
   }
 
   adjusted.sort((a, b) => getRangeStart(a) - getRangeStart(b));
-  return adjusted;
+
+  /** @type {(TemplateSyntax | [number, number])[]} */
+  const filtered = [];
+  for (const info of adjusted) {
+    if (!Array.isArray(info)) {
+      const start = getRangeStart(info);
+      const end = getRangeEnd(info);
+      const parent = filtered.findLast(
+        (candidate) =>
+          !Array.isArray(candidate) &&
+          getRangeStart(candidate) <= start &&
+          getRangeEnd(candidate) >= end
+      );
+      if (parent) {
+        continue;
+      }
+    }
+    filtered.push(info);
+  }
+
+  return filtered;
 }
 
 /**
@@ -159,6 +179,14 @@ function transformTemplTemplateInfos(code, infos) {
  */
 function getRangeStart(info) {
   return Array.isArray(info) ? info[0] : info.open[0];
+}
+
+/**
+ * @param {TemplateSyntax | [number, number]} info
+ * @returns {number}
+ */
+function getRangeEnd(info) {
+  return Array.isArray(info) ? info[1] : info.close[1];
 }
 
 /**
