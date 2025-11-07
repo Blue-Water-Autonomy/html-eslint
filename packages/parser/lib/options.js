@@ -120,6 +120,11 @@ function transformTemplTemplateInfos(code, infos) {
   for (const info of infos) {
     if (!info) continue;
     if (Array.isArray(info)) {
+      const text = code.slice(info[0], info[1]);
+      if (text === "{") {
+        adjusted.push(adjustTemplOpenRange(code, info));
+        continue;
+      }
       adjusted.push(/** @type {[number, number]} */ (info));
       continue;
     }
@@ -129,9 +134,8 @@ function transformTemplTemplateInfos(code, infos) {
     const isMultiline = /[\r\n]/.test(inner);
 
     if (isMultiline) {
-      adjusted.push(
-        /** @type {[number, number]} */ ([info.open[0], info.open[1]])
-      );
+      const openRange = adjustTemplOpenRange(code, info.open);
+      adjusted.push(openRange);
       adjusted.push(
         /** @type {[number, number]} */ ([info.close[0], info.close[1]])
       );
@@ -168,4 +172,66 @@ function hasSameEntries(candidate, reference) {
   return candidateEntries.every(
     ([key, value]) => referenceMap.has(key) && referenceMap.get(key) === value
   );
+}
+
+/**
+ * @param {string} code
+ * @param {[number, number]} open
+ * @returns {[number, number]}
+ */
+function adjustTemplOpenRange(code, open) {
+  const [start, end] = open;
+  let cursor = start - 1;
+  while (cursor >= 0 && /\s/.test(code[cursor])) {
+    cursor -= 1;
+  }
+  if (cursor >= 0 && code[cursor] === "=") {
+    return /** @type {[number, number]} */ ([start, end]);
+  }
+
+  let statementStart = start;
+  let lineCursor = start - 1;
+  while (lineCursor >= 0) {
+    const char = code[lineCursor];
+    if (char === "\n" || char === "\r") {
+      statementStart = lineCursor + 1;
+      break;
+    }
+    lineCursor -= 1;
+  }
+  if (lineCursor < 0) {
+    statementStart = 0;
+  }
+
+  while (statementStart < start && /\s/.test(code[statementStart])) {
+    statementStart += 1;
+  }
+
+  if (code[statementStart] === "}") {
+    statementStart += 1;
+    while (statementStart < start && /\s/.test(code[statementStart])) {
+      statementStart += 1;
+    }
+  }
+
+  if (
+    statementStart >= start ||
+    code[statementStart] === "<" ||
+    !isTemplControlKeyword(code.slice(statementStart, start).trim())
+  ) {
+    return /** @type {[number, number]} */ ([start, end]);
+  }
+
+  return /** @type {[number, number]} */ ([statementStart, end]);
+}
+
+/**
+ * @param {string} segment
+ * @returns {boolean}
+ */
+function isTemplControlKeyword(segment) {
+  if (!segment) {
+    return false;
+  }
+  return /^(if\b|for\b|switch\b|else\b|case\b|default\b|@)/.test(segment);
 }
