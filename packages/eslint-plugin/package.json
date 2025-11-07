@@ -1,6 +1,6 @@
 {
   "name": "@blue-water-autonomy/html-eslint-plugin",
-  "version": "0.47.2-bwa.4",
+  "version": "0.47.2-bwa.5",
   "type": "commonjs",
   "description": "ESLint plugin for HTML",
   "author": "yeonjuan",
@@ -39,7 +39,7 @@
     "accessibility"
   ],
   "dependencies": {
-    "@blue-water-autonomy/html-eslint-parser": "^0.47.2-bwa.4",
+    "@blue-water-autonomy/html-eslint-parser": "^0.47.2-bwa.5",
     "@blue-water-autonomy/html-eslint-template-parser": "^0.47.2-bwa.1",
     "@blue-water-autonomy/html-eslint-template-syntax-parser": "^0.47.2-bwa.1",
     "@blue-water-autonomy/html-eslint-types": "^0.47.2-bwa.1",
