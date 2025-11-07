@@ -51,7 +51,10 @@ const plugin = {
       rules: templRules,
       languageOptions: {
         parser: parser,
+        // For `language: 'html/html'`
+        templateEngineSyntax: parser.TEMPLATE_ENGINE_SYNTAX.TEMPL,
         parserOptions: {
+          // For configs without `language: 'html/html'`
           templateEngineSyntax: parser.TEMPLATE_ENGINE_SYNTAX.TEMPL,
         },
       },
