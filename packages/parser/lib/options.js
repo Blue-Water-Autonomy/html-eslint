@@ -105,18 +105,7 @@ module.exports = {
  * @returns {boolean}
  */
 function isTemplSyntax(syntax) {
-  if (!syntax) {
-    return false;
-  }
-  if (syntax === TEMPLATE_ENGINE_SYNTAX.TEMPL) {
-    return true;
-  }
-  const entries = Object.entries(syntax);
-  if (entries.length !== 1) {
-    return false;
-  }
-  const [open, close] = entries[0];
-  return open === "{" && close === "}";
+  return !!syntax && typeof syntax === "object" && hasSameEntries(syntax, TEMPLATE_ENGINE_SYNTAX.TEMPL);
 }
 
 /**
@@ -162,4 +151,21 @@ function transformTemplTemplateInfos(code, infos) {
  */
 function getRangeStart(info) {
   return Array.isArray(info) ? info[0] : info.open[0];
+}
+
+/**
+ * @param {Record<string, string>} candidate
+ * @param {Record<string, string>} reference
+ * @returns {boolean}
+ */
+function hasSameEntries(candidate, reference) {
+  const candidateEntries = Object.entries(candidate);
+  const referenceEntries = Object.entries(reference);
+  if (candidateEntries.length !== referenceEntries.length) {
+    return false;
+  }
+  const referenceMap = new Map(referenceEntries);
+  return candidateEntries.every(
+    ([key, value]) => referenceMap.has(key) && referenceMap.get(key) === value
+  );
 }
