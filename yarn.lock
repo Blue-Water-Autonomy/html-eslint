@@ -429,7 +429,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@blue-water-autonomy/html-eslint-parser@npm:^0.47.2-bwa.1, @blue-water-autonomy/html-eslint-parser@workspace:packages/parser":
+"@blue-water-autonomy/html-eslint-parser@npm:^0.47.2-bwa.4, @blue-water-autonomy/html-eslint-parser@workspace:packages/parser":
   version: 0.0.0-use.local
   resolution: "@blue-water-autonomy/html-eslint-parser@workspace:packages/parser"
   dependencies:
@@ -459,7 +459,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@blue-water-autonomy/html-eslint-plugin@workspace:packages/eslint-plugin"
   dependencies:
-    "@blue-water-autonomy/html-eslint-parser": "npm:^0.47.2-bwa.1"
+    "@blue-water-autonomy/html-eslint-parser": "npm:^0.47.2-bwa.4"
     "@blue-water-autonomy/html-eslint-template-parser": "npm:^0.47.2-bwa.1"
     "@blue-water-autonomy/html-eslint-template-syntax-parser": "npm:^0.47.2-bwa.1"
     "@blue-water-autonomy/html-eslint-types": "npm:^0.47.2-bwa.1"
