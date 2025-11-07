@@ -33,7 +33,7 @@ for (const testDir of testDirs) {
       plugins: {
         html: plugin,
       },
-      language: 'html/html',
+      language: "html/html",
       languageOptions: languageOptions || {},
       ...(processor ? { processor: processor } : {}),
       rules,

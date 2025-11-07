@@ -105,7 +105,11 @@ module.exports = {
  * @returns {boolean}
  */
 function isTemplSyntax(syntax) {
-  return !!syntax && typeof syntax === "object" && hasSameEntries(syntax, TEMPLATE_ENGINE_SYNTAX.TEMPL);
+  return (
+    !!syntax &&
+    typeof syntax === "object" &&
+    hasSameEntries(syntax, TEMPLATE_ENGINE_SYNTAX.TEMPL)
+  );
 }
 
 /**
