@@ -94,7 +94,8 @@ parserOptions: {
 }
 
 // Templ integration (sets `templateEngineSyntax` and disables rules that conflict with `templ fmt`)
-extends: ["html/templ"]
+extends: ["html/templ"],
+processor: 'html/templ'
 ```
 
 ## Skip frontmatter
