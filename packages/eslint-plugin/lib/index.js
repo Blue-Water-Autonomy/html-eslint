@@ -58,6 +58,7 @@ const plugin = {
           templateEngineSyntax: parser.TEMPLATE_ENGINE_SYNTAX.TEMPL,
         },
       },
+      processor: templProcessor,
     },
   },
 };
