@@ -1,0 +1,40 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+repo_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+registry="https://npm.pkg.github.com"
+if ! token="$(gh auth token)"; then
+  echo "Error: Failed to get GitHub token. Please ensure you are logged in with 'gh auth login'." >&2
+  exit 1
+fi
+cat > "$HOME/.yarnrc.yml" <<EOF
+npmScopes:
+  blue-water-autonomy:
+    npmRegistryServer: "https://npm.pkg.github.com"
+    npmAuthToken: "${token}"
+EOF
+
+cat > "${repo_dir}/.npmrc" <<EOF
+@blue-water-autonomy:registry=${registry}
+//npm.pkg.github.com/:_authToken=${token}
+EOF
+
+echo '.npmrc written for GitHub Packages.'
+
+version="$(jq --raw-output '.version' "${repo_dir}/lerna.json")"
+
+args=()
+bump="from-package"
+if npm show @blue-water-autonomy/html-eslint-plugin@"${version}"; then
+  echo "Version ${version} already exists in the registry, publishing a pre-release"
+  args+=('--preid' 'bwa')
+  bump="prerelease"
+else
+  echo "Version ${version} does not exist in the registry, publishing it"
+fi
+
+cd "${repo_dir}"
+yarn lerna publish \
+  --no-private \
+  "${args[@]}" \
+  --registry="${registry}" "$bump"
