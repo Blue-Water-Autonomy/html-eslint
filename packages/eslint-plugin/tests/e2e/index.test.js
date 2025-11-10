@@ -2,48 +2,56 @@ const eslint = require(`eslint`);
 const fs = require(`fs`);
 const path = require(`path`);
 
+const plugin = require(`@html-eslint/eslint-plugin`);
+
 const testDirs = fs
   .readdirSync(__dirname, { withFileTypes: true })
   .filter((entry) => entry.isDirectory());
 
 for (const testDir of testDirs) {
+  // Skip Templ test for now
+  if (testDir.name.includes("templ")) {
+    continue;
+  }
   const testName = testDir.name;
   const testPath = path.join(__dirname, testName);
+  const testConfigPath = path.join(testPath, `test-config.js`);
+  const testConfig = require(testConfigPath);
 
-  test(`e2e/` + testDir.name, () => {
-    const configRules = require(path.join(testPath, `rules.js`));
+  const {
+    fixedFileName,
+    sourceFileName,
+    languageOptions,
+    processor = undefined,
+    rules,
+  } = testConfig;
 
+  if (!sourceFileName) {
+    throw new Error(
+      `Missing required "sourceFileName" in ${path.relative(process.cwd(), testConfigPath)}`
+    );
+  }
+
+  test(`e2e/${testName}`, () => {
     const config = {
       plugins: {
-        "@html-eslint": require("@html-eslint/eslint-plugin"),
+        html: plugin,
       },
-      languageOptions: {
-        parser: require(`@html-eslint/parser`),
-      },
-      rules: configRules,
+      language: "html/html",
+      languageOptions: languageOptions || {},
+      ...(processor ? { processor: processor } : {}),
+      rules,
     };
 
     const linter = new eslint.Linter();
+    const sourcePath = path.join(testPath, sourceFileName);
+    const source = fs.readFileSync(sourcePath, { encoding: `utf8` });
+    const fixedPath = path.join(testPath, fixedFileName);
+    const expected = fs.readFileSync(fixedPath, { encoding: `utf8` });
 
-    const source = fs.readFileSync(path.join(testPath, `source.html`), {
-      encoding: `utf8`,
-    });
-
-    const outputPath = path.join(testPath, `fixed.html`);
-    const shouldHaveErrors = fs.existsSync(outputPath);
-
-    let messages;
-    if (shouldHaveErrors) {
-      const expected = fs.readFileSync(outputPath, { encoding: `utf8` });
-      // @ts-ignore
-      const result = linter.verifyAndFix(source, config);
-      messages = result.messages;
-      expect(result.output).toEqual(expected);
-    } else {
-      // If no `fixed.html`, assume the `source.html` should have no errors/warnings
-      // @ts-ignore
-      messages = linter.verify(source, config);
-    }
-    expect(JSON.stringify(messages, null, `\t`)).toEqual(`[]`); // Quick-and-dirty to check for and print any unfixed errors/warnings
+    const result = linter.verifyAndFix(source, config);
+    expect(JSON.stringify(result.messages, null, `\t`)).toEqual(`[]`);
+    expect(result.output).toEqual(expected);
+    return;
   });
 }

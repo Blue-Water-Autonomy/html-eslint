@@ -16,9 +16,15 @@ const TWIG = [
 const ERB = {
   "<%": "%>",
 };
+/** @type {SyntaxConfig} */
+const TEMPL = {
+  "{": "}",
+  "{{": "}}",
+};
 
 module.exports = {
   HANDLEBAR,
   TWIG,
   ERB,
+  TEMPL,
 };

@@ -67,6 +67,7 @@
     "nofullscreen",
     "controlslist",
     "describedby",
-    "atrule"
+    "atrule",
+    "templ"
   ]
 }

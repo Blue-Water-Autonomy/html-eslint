@@ -1,0 +1,156 @@
+package fixtures
+
+import (
+	"fmt"
+	"strings"
+	"time"
+
+	"github.com/a-h/templ"
+)
+
+type Item struct {
+	ID          string
+	Title       string
+	Description *string
+	Tags        []string
+	Active      bool
+	URL         string
+}
+
+func statusClass(active bool) string {
+	if active {
+		return "is-active"
+	}
+	return "is-inactive"
+}
+
+func stateClass(count int) string {
+	switch {
+	case count == 0:
+		return "is-empty"
+	case count > 7:
+		return "is-busy"
+	default:
+		return "has-data"
+	}
+}
+
+func uppercaseTags(tags []string) []string {
+	result := make([]string, 0, len(tags))
+	for _, tag := range tags {
+		result = append(result, strings.ToUpper(tag))
+	}
+	return result
+}
+
+templ PageHeader(name string, count int) {
+	<header class="page-header">
+		<h1>Hello, { name }!</h1>
+		<p>{ fmt.Sprintf("Tracking %d item(s).", count) }</p>
+		<nav aria-label="Primary navigation">
+			<ul class="menu">
+				<li><a href="/items">Items</a></li>
+				<li><a href="/reports">Reports</a></li>
+				<li><a href="/settings">Settings</a></li>
+			</ul>
+		</nav>
+	</header>
+}
+
+templ ItemList(items []Item) {
+	<ul class="item-list">
+		for index, item := range items {
+			<li
+				id={ fmt.Sprintf("item-%s", item.ID) }
+				class={ "item", statusClass(item.Active) }
+				if index != nil {
+					data-index={ fmt.Sprintf("%d", index) }
+				} else {
+					data-index="unknown"
+				}
+			>
+				<article class="card">
+					<header>
+						<h2>{ item.Title }</h2>
+					</header>
+					if item.Description != nil {
+						<p>{ *item.Description }</p>
+					}
+					<a href={ item.URL } target="_blank" rel="noopener">
+						View details
+					</a>
+					if len(item.Tags) > 0 {
+						<ul class="tags">
+							for _, tag := range uppercaseTags(item.Tags) {
+								<li class="tag">{ tag }</li>
+							}
+						</ul>
+					}
+				</article>
+			</li>
+		}
+	</ul>
+}
+
+templ KitchenSink(name string, items []Item, alerts <-chan string, footer templ.Component) {
+	<!doctype html>
+	<html lang="en">
+		<head>
+			<meta charset="utf-8"></meta>
+			<meta name="viewport" content="width=device-width, initial-scale=1"></meta>
+			<meta name="description" content="Fixture for kitchen sink templ lint coverage"></meta>
+			<meta property="og:url" content="https://canonical-url.com"></meta>
+			<meta property="og:type" content="video.movie"></meta>
+			<meta property="og:title" content="title"></meta>
+			<meta property="og:image" content="https://image.png"></meta>
+			<title>Templ Kitchen Sink</title>
+			<link rel="stylesheet" href="/assets/css/base.css"></link>
+			<script src="/assets/js/htmx.min.js" defer></script>
+		</head>
+		<body class={ "kitchen-sink", stateClass(len(items)) } data-count={ fmt.Sprintf("%d", len(items)) }>
+			@PageHeader(name, len(items))
+			<main id="content">
+				if len(items) == 0 {
+					<section class="empty">
+						<p>No items found yet.</p>
+						<a href="/items/new">Create your first item</a>
+					</section>
+				} else {
+					<section id="items" class="collection" hx-get="/items" hx-trigger="refresh" hx-swap="outerHTML">
+						@ItemList(items)
+					</section>
+				}
+				switch {
+				case len(items) == 0:
+					<p role="status">Waiting for the very first item.</p>
+				default:
+					<p role="status">{ fmt.Sprintf("%d total item(s).", len(items)) }</p>
+				}
+				<section aria-live="polite">
+					@templ.Flush() {
+						<div id="live_updates">
+							for msg := range alerts {
+								<output class="alert">{ msg }</output>
+							}
+						</div>
+					}
+				</section>
+				{{ onChange := fmt.Sprintf("htmx.ajax('PUT', `/api/thing/%s/${this.value}/set-delay`, {swap: 'none'})", thing.Name) }}
+				<label>
+					Delay (seconds):
+					<select
+						onchange={ templ.ComponentScript{Call: onChange} }
+					>
+						<option value="0" selected?={ thing.Delay == 0 }>0</option>
+						<option value="1" selected?={ thing.Delay == 1 }>1</option>
+					</select>
+				</label>
+			</main>
+			<footer role="contentinfo">
+				@footer
+				<small>Rendered at { time.Now().Format(time.RFC3339) }</small>
+				@templ.Raw("<span class=\"legal\">Templ example</span>")
+			</footer>
+		</body>
+	</html>
+}

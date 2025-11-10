@@ -4,8 +4,10 @@ const {
   recommendedLegacyRules,
 } = require("./configs/recommended");
 const { allRules, allRulesLegacy } = require("./configs/all");
+const { templRules } = require("./configs/templ");
 const { HTMLLanguage } = require("./languages/html-language");
 const { name, version } = require("../package.json");
+const templProcessor = require("./processors/templ");
 const parser = require("@html-eslint/parser");
 /** @import {ESLint} from "eslint" */
 
@@ -16,6 +18,9 @@ const plugin = {
   },
   languages: {
     html: new HTMLLanguage(),
+  },
+  processors: {
+    templ: templProcessor,
   },
   rules,
   configs: {
@@ -53,6 +58,18 @@ const plugin = {
         parser,
       },
       rules: allRulesLegacy,
+    },
+    templ: {
+      rules: templRules,
+      languageOptions: {
+        parser: parser,
+        // For `language: 'html/html'`
+        templateEngineSyntax: parser.TEMPLATE_ENGINE_SYNTAX.TEMPL,
+        parserOptions: {
+          // For configs without `language: 'html/html'`
+          templateEngineSyntax: parser.TEMPLATE_ENGINE_SYNTAX.TEMPL,
+        },
+      },
     },
   },
 };
