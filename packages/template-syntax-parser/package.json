@@ -33,5 +33,6 @@
   "devDependencies": {
     "eslint": "^9.39.1",
     "globals": "^15.12.0"
-  }
+  },
+  "gitHead": "25f0dbc4cc8703b84b5f619b34599dfd45c7e38e"
 }
