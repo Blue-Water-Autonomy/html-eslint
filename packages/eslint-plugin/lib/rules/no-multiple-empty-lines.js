@@ -1,5 +1,5 @@
 /**
- * @import {CommentContent, Text} from "@html-eslint/types";
+ * @import {CommentContent, Text} from "@blue-water-autonomy/html-eslint-types";
  * @import {RuleModule} from "../types";
  *
  * @typedef {Object} Option

@@ -2,7 +2,7 @@
  * @import {AST} from 'eslint';
  * @import {SourceLocation, DirectiveType} from '@eslint/plugin-kit';
  * @import {TraversalStep, Position} from '@eslint/core';
- * @import {CommentContent, AnyHTMLNode} from '@html-eslint/types';
+ * @import {CommentContent, AnyHTMLNode} from '@blue-water-autonomy/html-eslint-types';
  * @import {BaseNode} from '../types';
  */
 
@@ -12,7 +12,7 @@ const {
   Directive,
 } = require("@eslint/plugin-kit");
 const { HTMLTraversalStep, STEP_PHASE } = require("./html-traversal-step");
-const { visitorKeys } = require("@html-eslint/parser");
+const { visitorKeys } = require("@blue-water-autonomy/html-eslint-parser");
 
 const lineBreakPattern = /\r\n|[\r\n\u2028\u2029]/u;
 

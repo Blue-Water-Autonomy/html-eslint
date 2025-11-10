@@ -1,5 +1,5 @@
 /**
- * @import {Tag, AttributeValue} from "@html-eslint/types";
+ * @import {Tag, AttributeValue} from "@blue-water-autonomy/html-eslint-types";
  * @import {RuleModule} from "../types";
  */
 

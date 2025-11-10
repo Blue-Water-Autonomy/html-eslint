@@ -1,5 +1,5 @@
 /**
- * @import { Text, AnyNode, OpenTagEnd, CloseTag } from '@html-eslint/types';
+ * @import { Text, AnyNode, OpenTagEnd, CloseTag } from '@blue-water-autonomy/html-eslint-types';
  * @import { Line, RuleModule } from '../types';
  * @typedef { AnyNode | Line } AnyNodeOrLine
  * @typedef {Object} Option

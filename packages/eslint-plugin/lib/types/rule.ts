@@ -1,5 +1,5 @@
 import eslint from "eslint";
-import * as AST from "@html-eslint/types";
+import * as AST from "@blue-water-autonomy/html-eslint-types";
 import * as estree from "estree";
 import { Line } from "./ast";
 

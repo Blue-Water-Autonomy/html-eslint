@@ -1,9 +1,9 @@
 {
-  "name": "@html-eslint/types",
+  "name": "@blue-water-autonomy/html-eslint-types",
   "version": "0.48.0",
-  "description": "Types for @html-eslint/eslint-plugin",
+  "description": "Types for @blue-water-autonomy/html-eslint-plugin",
   "author": "yeonjuan",
-  "homepage": "https://github.com/yeonjuan/html-eslint#readme",
+  "homepage": "https://github.com/Blue-Water-Autonomy/html-eslint#readme",
   "license": "MIT",
   "types": "lib/index.d.ts",
   "files": [
@@ -14,13 +14,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/yeonjuan/html-eslint.git"
+    "url": "git+https://github.com/Blue-Water-Autonomy/html-eslint.git"
   },
   "scripts": {
     "ts": "tsc --noEmit"
   },
   "bugs": {
-    "url": "https://github.com/yeonjuan/html-eslint/issues"
+    "url": "https://github.com/Blue-Water-Autonomy/html-eslint/issues"
   },
   "dependencies": {
     "@types/estree": "^1.0.6",

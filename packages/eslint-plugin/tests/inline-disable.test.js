@@ -4,10 +4,10 @@ const ESLint = require("eslint");
 const LEGACY_OPTIONS = {
   plugins: {
     // @ts-ignore
-    "@html-eslint": require("@html-eslint/eslint-plugin"),
+    "@html-eslint": require("@blue-water-autonomy/html-eslint-plugin"),
   },
   languageOptions: {
-    parser: require("@html-eslint/parser"),
+    parser: require("@blue-water-autonomy/html-eslint-parser"),
   },
 };
 
@@ -15,10 +15,10 @@ const LEGACY_OPTIONS = {
 const LANGUAGE_OPTIONS = {
   plugins: {
     // @ts-ignore
-    "@html-eslint": require("@html-eslint/eslint-plugin"),
+    "@html-eslint": require("@blue-water-autonomy/html-eslint-plugin"),
   },
   languageOptions: {
-    parser: require("@html-eslint/parser"),
+    parser: require("@blue-water-autonomy/html-eslint-parser"),
   },
 };
 

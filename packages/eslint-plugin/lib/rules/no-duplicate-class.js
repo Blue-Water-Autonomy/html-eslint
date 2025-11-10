@@ -1,13 +1,13 @@
 /**
- * @import {AttributeValue} from "@html-eslint/types";
+ * @import {AttributeValue} from "@blue-water-autonomy/html-eslint-types";
  * @import {RuleModule} from "../types";
  * @typedef {Object} ClassInfo
  * @property {string} name
- * @property {import("@html-eslint/types").AnyNode['loc']} loc
- * @property {import("@html-eslint/types").AnyNode['range']} range
+ * @property {import("@blue-water-autonomy/html-eslint-types").AnyNode['loc']} loc
+ * @property {import("@blue-water-autonomy/html-eslint-types").AnyNode['range']} range
  */
 
-const { NODE_TYPES } = require("@html-eslint/parser");
+const { NODE_TYPES } = require("@blue-water-autonomy/html-eslint-parser");
 const { RULE_CATEGORY } = require("../constants");
 const { createVisitors } = require("./utils/visitors");
 const { getRuleUrl } = require("./utils/rule");

@@ -1,5 +1,5 @@
-const html = require('@html-eslint/eslint-plugin');
-const htmlParser = require('@html-eslint/parser');
+const html = require('@blue-water-autonomy/html-eslint-plugin');
+const htmlParser = require('@blue-water-autonomy/html-eslint-parser');
 
 module.exports = [
     {

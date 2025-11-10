@@ -1,6 +1,6 @@
 /**
  * @import {RuleModule} from "../types";
- * @import {Attribute, Tag, ScriptTag, StyleTag} from "@html-eslint/types";
+ * @import {Attribute, Tag, ScriptTag, StyleTag} from "@blue-water-autonomy/html-eslint-types";
  * @typedef {Object} Option
  * @property {"widely" | "newly" | number} Option.available
  */

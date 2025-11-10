@@ -1,10 +1,10 @@
 {
-  "name": "@html-eslint/eslint-plugin",
+  "name": "@blue-water-autonomy/html-eslint-plugin",
   "version": "0.48.0",
   "type": "commonjs",
   "description": "ESLint plugin for HTML",
   "author": "yeonjuan",
-  "homepage": "https://github.com/yeonjuan/html-eslint#readme",
+  "homepage": "https://github.com/Blue-Water-Autonomy/html-eslint#readme",
   "license": "MIT",
   "main": "lib/index.js",
   "types": "types/exports.d.ts",
@@ -17,7 +17,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/yeonjuan/html-eslint.git"
+    "url": "git+https://github.com/Blue-Water-Autonomy/html-eslint.git"
   },
   "scripts": {
     "test": "jest --coverage",
@@ -27,7 +27,7 @@
     "build": "rimraf types && tsc --project tsconfig.build.json"
   },
   "bugs": {
-    "url": "https://github.com/yeonjuan/html-eslint/issues"
+    "url": "https://github.com/Blue-Water-Autonomy/html-eslint/issues"
   },
   "keywords": [
     "eslint",
@@ -39,11 +39,11 @@
     "accessibility"
   ],
   "dependencies": {
-    "@eslint/plugin-kit": "^0.3.1",
-    "@html-eslint/parser": "^0.48.0",
-    "@html-eslint/template-parser": "^0.48.0",
-    "@html-eslint/template-syntax-parser": "^0.48.0",
-    "@html-eslint/types": "^0.48.0"
+    "@blue-water-autonomy/html-eslint-parser": "^0.48.0",
+    "@blue-water-autonomy/html-eslint-template-parser": "^0.48.0",
+    "@blue-water-autonomy/html-eslint-template-syntax-parser": "^0.48.0",
+    "@blue-water-autonomy/html-eslint-types": "^0.48.0",
+    "@eslint/plugin-kit": "^0.3.1"
   },
   "peerDependencies": {
     "eslint": "^8.0.0 || ^9.0.0"

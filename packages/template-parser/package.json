@@ -1,9 +1,9 @@
 {
-  "name": "@html-eslint/template-parser",
+  "name": "@blue-water-autonomy/html-eslint-template-parser",
   "version": "0.48.0",
   "description": "HTML parser for template literals ",
   "author": "yeonjuan",
-  "homepage": "https://github.com/yeonjuan/html-eslint#readme",
+  "homepage": "https://github.com/Blue-Water-Autonomy/html-eslint#readme",
   "license": "MIT",
   "main": "lib/index.js",
   "types": "types/exports.d.ts",
@@ -16,7 +16,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/yeonjuan/html-eslint.git"
+    "url": "git+https://github.com/Blue-Water-Autonomy/html-eslint.git"
   },
   "scripts": {
     "ts": "tsc --noEmit",
@@ -25,10 +25,10 @@
     "build": "rimraf types && tsc --project tsconfig.build.json"
   },
   "bugs": {
-    "url": "https://github.com/yeonjuan/html-eslint/issues"
+    "url": "https://github.com/Blue-Water-Autonomy/html-eslint/issues"
   },
   "dependencies": {
-    "@html-eslint/types": "^0.48.0",
+    "@blue-water-autonomy/html-eslint-types": "^0.48.0",
     "es-html-parser": "0.3.1"
   },
   "devDependencies": {

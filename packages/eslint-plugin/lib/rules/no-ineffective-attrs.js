@@ -1,6 +1,6 @@
 /**
  * @import {RuleModule} from "../types";
- * @import {Tag, ScriptTag} from "@html-eslint/types"
+ * @import {Tag, ScriptTag} from "@blue-water-autonomy/html-eslint-types"
  * @typedef {{ attr: string; when: (node: Tag | ScriptTag) => boolean; message: string; }} AttributeChecker
  */
 

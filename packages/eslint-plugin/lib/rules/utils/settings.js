@@ -1,6 +1,6 @@
 /**
  * @import {MaybeHTMLSettings, HTMLSettings, Context} from "../../types";
- * @import {TaggedTemplateExpression, TemplateLiteral} from "@html-eslint/types";
+ * @import {TaggedTemplateExpression, TemplateLiteral} from "@blue-water-autonomy/html-eslint-types";
  */
 
 const { getSourceCode } = require("../utils/source-code");

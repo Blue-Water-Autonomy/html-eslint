@@ -2,7 +2,7 @@ const eslint = require(`eslint`);
 const fs = require(`fs`);
 const path = require(`path`);
 
-const plugin = require(`@html-eslint/eslint-plugin`);
+const plugin = require(`@blue-water-autonomy/html-eslint-plugin`);
 
 const testDirs = fs
   .readdirSync(__dirname, { withFileTypes: true })

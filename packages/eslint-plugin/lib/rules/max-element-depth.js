@@ -1,5 +1,5 @@
 /**
- * @import {Tag, StyleTag, ScriptTag} from "@html-eslint/types";
+ * @import {Tag, StyleTag, ScriptTag} from "@blue-water-autonomy/html-eslint-types";
  * @import {RuleModule} from "../types";
  *
  * @typedef {Object} Option

@@ -1,6 +1,6 @@
 /**
  * @import {RuleModule} from "../types";
- * @import {Text} from "@html-eslint/types";
+ * @import {Text} from "@blue-water-autonomy/html-eslint-types";
  */
 
 // Define the type for entities.json
