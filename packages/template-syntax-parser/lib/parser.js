@@ -185,26 +185,30 @@ module.exports = class Parser {
    */
   eatSyntax(syntax) {
     if (syntax.type === "open") {
-      const top = this.syntaxStack.pop();
+      this.syntaxStack.push(syntax);
+      return;
+    }
+
+    if (syntax.type === "close") {
+      const top = this.syntaxStack[this.syntaxStack.length - 1];
       if (!top) {
-        this.syntaxStack.push(syntax);
-      } else {
         throw new Error(
-          `Expecting "${this.getPossibleCloseValueOf(top)}", but found "${
-            syntax.value
-          }" at (${syntax.range[0]}, ${syntax.range[1]}).`
+          `Unexpected close "${syntax.value}" at (${syntax.range[0]}, ${syntax.range[1]}).`
         );
       }
-    } else if (syntax.type === "close") {
-      const top = this.syntaxStack.pop();
-      if (!top) {
-        return;
-      } else if (this.getPossibleCloseValueOf(top) === syntax.value) {
-        this.result.push({
-          open: [top.range[0], top.range[0] + top.value.length],
-          close: [syntax.range[1] - syntax.value.length, syntax.range[1]],
-        });
+
+      const expected = this.getPossibleCloseValueOf(top);
+      if (expected !== syntax.value) {
+        throw new Error(
+          `Expecting "${expected}", but found "${syntax.value}" at (${syntax.range[0]}, ${syntax.range[1]}).`
+        );
       }
+
+      this.syntaxStack.pop();
+      this.result.push({
+        open: [top.range[0], top.range[0] + top.value.length],
+        close: [syntax.range[1] - syntax.value.length, syntax.range[1]],
+      });
     }
   }
 
@@ -215,6 +219,9 @@ module.exports = class Parser {
     for (const syntax of this.findAllSyntax()) {
       this.eatSyntax(syntax);
     }
+
+    this.result.sort((a, b) => a.open[0] - b.open[0]);
+
     return {
       syntax: this.result,
     };

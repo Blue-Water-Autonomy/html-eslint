@@ -5,6 +5,7 @@
  */
 
 const templateSyntaxParser = require("@html-eslint/template-syntax-parser");
+const TEMPLATE_ENGINE_SYNTAX = require("./template-engine-syntax-preset");
 const { parseFrontmatterContent } = require("./frontmatter");
 /**
  * @param {string} code
@@ -20,13 +21,17 @@ function getOptions(code, parserOptions) {
     };
   }
   /**
-   * @type {TemplateSyntax[] | undefined}
+   * @type {((TemplateSyntax | [number, number]))[] | undefined}
    */
   let templateInfos = undefined;
   if (parserOptions.templateEngineSyntax) {
     templateInfos = templateSyntaxParser.parse(code, {
       syntax: parserOptions.templateEngineSyntax,
     }).syntax;
+
+    if (isTemplSyntax(parserOptions.templateEngineSyntax)) {
+      templateInfos = transformTemplTemplateInfos(code, templateInfos);
+    }
   }
 
   /**
@@ -94,3 +99,171 @@ function getOptions(code, parserOptions) {
 module.exports = {
   getOptions,
 };
+
+/**
+ * @param {Record<string, string> | undefined} syntax
+ * @returns {boolean}
+ */
+function isTemplSyntax(syntax) {
+  return (
+    !!syntax &&
+    typeof syntax === "object" &&
+    hasSameEntries(syntax, TEMPLATE_ENGINE_SYNTAX.TEMPL)
+  );
+}
+
+/**
+ * @param {string} code
+ * @param {(TemplateSyntax | [number, number])[]} infos
+ * @returns {(TemplateSyntax | [number, number])[]}
+ */
+function transformTemplTemplateInfos(code, infos) {
+  /** @type {(TemplateSyntax | [number, number])[]} */
+  const adjusted = [];
+
+  for (const info of infos) {
+    if (!info) continue;
+    if (Array.isArray(info)) {
+      const text = code.slice(info[0], info[1]);
+      if (text === "{") {
+        adjusted.push(adjustTemplOpenRange(code, info));
+        continue;
+      }
+      adjusted.push(/** @type {[number, number]} */ (info));
+      continue;
+    }
+    const openEnd = info.open[1];
+    const closeStart = info.close[0];
+    const inner = code.slice(openEnd, closeStart);
+    const isMultiline = /[\r\n]/.test(inner);
+
+    if (isMultiline) {
+      const openRange = adjustTemplOpenRange(code, info.open);
+      adjusted.push(openRange);
+      adjusted.push(
+        /** @type {[number, number]} */ ([info.close[0], info.close[1]])
+      );
+      continue;
+    }
+
+    adjusted.push(info);
+  }
+
+  adjusted.sort((a, b) => getRangeStart(a) - getRangeStart(b));
+
+  /** @type {(TemplateSyntax | [number, number])[]} */
+  const filtered = [];
+  for (const info of adjusted) {
+    if (!Array.isArray(info)) {
+      const start = getRangeStart(info);
+      const end = getRangeEnd(info);
+      const parent = filtered.findLast(
+        (candidate) =>
+          !Array.isArray(candidate) &&
+          getRangeStart(candidate) <= start &&
+          getRangeEnd(candidate) >= end
+      );
+      if (parent) {
+        continue;
+      }
+    }
+    filtered.push(info);
+  }
+
+  return filtered;
+}
+
+/**
+ * @param {TemplateSyntax | [number, number]} info
+ * @returns {number}
+ */
+function getRangeStart(info) {
+  return Array.isArray(info) ? info[0] : info.open[0];
+}
+
+/**
+ * @param {TemplateSyntax | [number, number]} info
+ * @returns {number}
+ */
+function getRangeEnd(info) {
+  return Array.isArray(info) ? info[1] : info.close[1];
+}
+
+/**
+ * @param {Record<string, string>} candidate
+ * @param {Record<string, string>} reference
+ * @returns {boolean}
+ */
+function hasSameEntries(candidate, reference) {
+  const candidateEntries = Object.entries(candidate);
+  const referenceEntries = Object.entries(reference);
+  if (candidateEntries.length !== referenceEntries.length) {
+    return false;
+  }
+  const referenceMap = new Map(referenceEntries);
+  return candidateEntries.every(
+    ([key, value]) => referenceMap.has(key) && referenceMap.get(key) === value
+  );
+}
+
+/**
+ * @param {string} code
+ * @param {[number, number]} open
+ * @returns {[number, number]}
+ */
+function adjustTemplOpenRange(code, open) {
+  const [start, end] = open;
+  let cursor = start - 1;
+  while (cursor >= 0 && /\s/.test(code[cursor])) {
+    cursor -= 1;
+  }
+  if (cursor >= 0 && code[cursor] === "=") {
+    return /** @type {[number, number]} */ ([start, end]);
+  }
+
+  let statementStart = start;
+  let lineCursor = start - 1;
+  while (lineCursor >= 0) {
+    const char = code[lineCursor];
+    if (char === "\n" || char === "\r") {
+      statementStart = lineCursor + 1;
+      break;
+    }
+    lineCursor -= 1;
+  }
+  if (lineCursor < 0) {
+    statementStart = 0;
+  }
+
+  while (statementStart < start && /\s/.test(code[statementStart])) {
+    statementStart += 1;
+  }
+
+  if (code[statementStart] === "}") {
+    statementStart += 1;
+    while (statementStart < start && /\s/.test(code[statementStart])) {
+      statementStart += 1;
+    }
+  }
+
+  if (
+    statementStart >= start ||
+    code[statementStart] === "<" ||
+    !isTemplControlKeyword(code.slice(statementStart, start).trim())
+  ) {
+    return /** @type {[number, number]} */ ([start, end]);
+  }
+
+  return /** @type {[number, number]} */ ([statementStart, end]);
+}
+
+/**
+ * @param {string} segment
+ * @returns {boolean}
+ */
+function isTemplControlKeyword(segment) {
+  if (!segment) {
+    return false;
+  }
+  return /^(if\b|for\b|switch\b|else\b|case\b|default\b|@)/.test(segment);
+}

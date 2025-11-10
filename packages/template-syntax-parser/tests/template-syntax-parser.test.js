@@ -15,6 +15,18 @@ const ERB = {
     "<%": " %>",
   },
 };
+const TEMPL = {
+  syntax: {
+    "{": "}",
+  },
+};
+const TWIG = {
+  syntax: {
+    "{{": "}}",
+    "{#": "#}",
+    "{%": "%}",
+  },
+};
 
 describe("basic", () => {
   /**
@@ -58,10 +70,48 @@ describe("basic", () => {
 });
 
 describe("error", () => {
-  test("nested", () => {
-    expect(() => parse("{{{ {{ }} }}}", HANDLEBAR)).toThrowError();
-  });
   test("unclosed", () => {
-    expect(() => parse("{{{ {{", HANDLEBAR)).toThrowError();
+    expect(() => parse("{{{ {{", HANDLEBAR)).not.toThrow();
+    expect(parse("{{{ {{", HANDLEBAR).syntax).toStrictEqual([]);
+  });
+  test("unexpected close", () => {
+    expect(() => parse("}}", HANDLEBAR)).toThrowError();
+  });
+  test("mismatched close", () => {
+    expect(() => parse("{{ {# #} %}", TWIG)).toThrowError();
+  });
+});
+
+describe("nested", () => {
+  test("handlebar supports nested braces", () => {
+    const code = "{{ foo {{ bar }} baz }}";
+    expect(
+      parse(code, HANDLEBAR).syntax.map((s) => [s.open, s.close])
+    ).toStrictEqual([
+      [
+        [0, 2],
+        [21, 23],
+      ],
+      [
+        [7, 9],
+        [14, 16],
+      ],
+    ]);
+  });
+
+  test("templ supports nested braces", () => {
+    const code = "{ foo { bar } }";
+    expect(
+      parse(code, TEMPL).syntax.map((s) => [s.open, s.close])
+    ).toStrictEqual([
+      [
+        [0, 1],
+        [14, 15],
+      ],
+      [
+        [6, 7],
+        [12, 13],
+      ],
+    ]);
   });
 });
