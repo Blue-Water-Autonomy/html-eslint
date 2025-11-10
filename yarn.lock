@@ -384,6 +384,78 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@blue-water-autonomy/html-eslint-parser@npm:^0.54.0, @blue-water-autonomy/html-eslint-parser@workspace:packages/parser":
+  version: 0.0.0-use.local
+  resolution: "@blue-water-autonomy/html-eslint-parser@workspace:packages/parser"
+  dependencies:
+    "@blue-water-autonomy/html-eslint-template-syntax-parser": "npm:^0.54.0"
+    "@blue-water-autonomy/html-eslint-types": "npm:^0.54.0"
+    "@eslint/css-tree": "npm:^3.6.8"
+    "@types/css-tree": "npm:^2.3.11"
+    css-tree: "npm:^3.1.0"
+    es-html-parser: "npm:0.3.1"
+    typescript: "npm:^5.8.3"
+  languageName: unknown
+  linkType: soft
+
+"@blue-water-autonomy/html-eslint-plugin@workspace:packages/eslint-plugin":
+  version: 0.0.0-use.local
+  resolution: "@blue-water-autonomy/html-eslint-plugin@workspace:packages/eslint-plugin"
+  dependencies:
+    "@blue-water-autonomy/html-eslint-parser": "npm:^0.54.0"
+    "@blue-water-autonomy/html-eslint-template-parser": "npm:^0.54.0"
+    "@blue-water-autonomy/html-eslint-template-syntax-parser": "npm:^0.54.0"
+    "@blue-water-autonomy/html-eslint-types": "npm:^0.54.0"
+    "@eslint/core": "npm:^1.0.0"
+    "@eslint/plugin-kit": "npm:^0.4.1"
+    "@types/estree": "npm:^0.0.47"
+    es-html-parser: "npm:0.3.1"
+    eslint: "npm:^9.39.1"
+    espree: "npm:^10.3.0"
+    html-standard: "npm:0.0.8"
+    typescript: "npm:^5.8.3"
+  peerDependencies:
+    eslint: ">=8.0.0 || ^10.0.0-0"
+  languageName: unknown
+  linkType: soft
+
+"@blue-water-autonomy/html-eslint-template-parser@npm:^0.54.0, @blue-water-autonomy/html-eslint-template-parser@workspace:packages/template-parser":
+  version: 0.0.0-use.local
+  resolution: "@blue-water-autonomy/html-eslint-template-parser@workspace:packages/template-parser"
+  dependencies:
+    "@blue-water-autonomy/html-eslint-types": "npm:^0.54.0"
+    "@types/espree": "npm:^10.1.0"
+    "@types/estree": "npm:^0.0.47"
+    es-html-parser: "npm:0.3.1"
+    eslint: "npm:^9.39.1"
+    espree: "npm:^10.3.0"
+    globals: "npm:^15.12.0"
+  languageName: unknown
+  linkType: soft
+
+"@blue-water-autonomy/html-eslint-template-syntax-parser@npm:^0.54.0, @blue-water-autonomy/html-eslint-template-syntax-parser@workspace:packages/template-syntax-parser":
+  version: 0.0.0-use.local
+  resolution: "@blue-water-autonomy/html-eslint-template-syntax-parser@workspace:packages/template-syntax-parser"
+  dependencies:
+    "@blue-water-autonomy/html-eslint-types": "npm:^0.54.0"
+    eslint: "npm:^9.39.1"
+    globals: "npm:^15.12.0"
+  languageName: unknown
+  linkType: soft
+
+"@blue-water-autonomy/html-eslint-types@npm:^0.54.0, @blue-water-autonomy/html-eslint-types@workspace:packages/types":
+  version: 0.0.0-use.local
+  resolution: "@blue-water-autonomy/html-eslint-types@workspace:packages/types"
+  dependencies:
+    "@types/css-tree": "npm:^2.3.11"
+    "@types/estree": "npm:^1.0.6"
+    css-tree: "npm:^3.1.0"
+    es-html-parser: "npm:0.3.1"
+    eslint: "npm:^9.39.1"
+    typescript: "npm:^5.8.3"
+  languageName: unknown
+  linkType: soft
+
 "@conventional-changelog/git-client@npm:^2.5.1":
   version: 2.5.1
   resolution: "@conventional-changelog/git-client@npm:2.5.1"
@@ -1070,27 +1142,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@html-eslint/eslint-plugin@workspace:packages/eslint-plugin":
-  version: 0.0.0-use.local
-  resolution: "@html-eslint/eslint-plugin@workspace:packages/eslint-plugin"
-  dependencies:
-    "@eslint/core": "npm:^1.0.0"
-    "@eslint/plugin-kit": "npm:^0.4.1"
-    "@html-eslint/parser": "npm:^0.54.0"
-    "@html-eslint/template-parser": "npm:^0.54.0"
-    "@html-eslint/template-syntax-parser": "npm:^0.54.0"
-    "@html-eslint/types": "npm:^0.54.0"
-    "@types/estree": "npm:^0.0.47"
-    es-html-parser: "npm:0.3.1"
-    eslint: "npm:^9.39.1"
-    espree: "npm:^10.3.0"
-    html-standard: "npm:0.0.8"
-    typescript: "npm:^5.8.3"
-  peerDependencies:
-    eslint: ">=8.0.0 || ^10.0.0-0"
-  languageName: unknown
-  linkType: soft
-
 "@html-eslint/html-eslint@workspace:.":
   version: 0.0.0-use.local
   resolution: "@html-eslint/html-eslint@workspace:."
@@ -1110,57 +1161,6 @@ __metadata:
     prettier-plugin-jsdoc: "npm:^1.8.0"
     rimraf: "npm:^6.0.1"
     turbo: "npm:^2.5.3"
-    typescript: "npm:^5.8.3"
-  languageName: unknown
-  linkType: soft
-
-"@html-eslint/parser@npm:^0.54.0, @html-eslint/parser@workspace:packages/parser":
-  version: 0.0.0-use.local
-  resolution: "@html-eslint/parser@workspace:packages/parser"
-  dependencies:
-    "@eslint/css-tree": "npm:^3.6.8"
-    "@html-eslint/template-syntax-parser": "npm:^0.54.0"
-    "@html-eslint/types": "npm:^0.54.0"
-    "@types/css-tree": "npm:^2.3.11"
-    css-tree: "npm:^3.1.0"
-    es-html-parser: "npm:0.3.1"
-    typescript: "npm:^5.8.3"
-  languageName: unknown
-  linkType: soft
-
-"@html-eslint/template-parser@npm:^0.54.0, @html-eslint/template-parser@workspace:packages/template-parser":
-  version: 0.0.0-use.local
-  resolution: "@html-eslint/template-parser@workspace:packages/template-parser"
-  dependencies:
-    "@html-eslint/types": "npm:^0.54.0"
-    "@types/espree": "npm:^10.1.0"
-    "@types/estree": "npm:^0.0.47"
-    es-html-parser: "npm:0.3.1"
-    eslint: "npm:^9.39.1"
-    espree: "npm:^10.3.0"
-    globals: "npm:^15.12.0"
-  languageName: unknown
-  linkType: soft
-
-"@html-eslint/template-syntax-parser@npm:^0.54.0, @html-eslint/template-syntax-parser@workspace:packages/template-syntax-parser":
-  version: 0.0.0-use.local
-  resolution: "@html-eslint/template-syntax-parser@workspace:packages/template-syntax-parser"
-  dependencies:
-    "@html-eslint/types": "npm:^0.54.0"
-    eslint: "npm:^9.39.1"
-    globals: "npm:^15.12.0"
-  languageName: unknown
-  linkType: soft
-
-"@html-eslint/types@npm:^0.54.0, @html-eslint/types@workspace:packages/types":
-  version: 0.0.0-use.local
-  resolution: "@html-eslint/types@workspace:packages/types"
-  dependencies:
-    "@types/css-tree": "npm:^2.3.11"
-    "@types/estree": "npm:^1.0.6"
-    css-tree: "npm:^3.1.0"
-    es-html-parser: "npm:0.3.1"
-    eslint: "npm:^9.39.1"
     typescript: "npm:^5.8.3"
   languageName: unknown
   linkType: soft

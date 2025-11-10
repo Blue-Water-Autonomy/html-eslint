@@ -9,7 +9,7 @@
  *   TemplateLiteral,
  *   TemplateText,
  *   Text
- * } from "@html-eslint/types"
+ * } from "@blue-water-autonomy/html-eslint-types"
  * @import {AST} from "eslint"
  * @import {
  *   Context,
@@ -41,7 +41,7 @@
  */
 
 const { parseTemplateLiteral } = require("../utils/template-literal");
-const { NODE_TYPES } = require("@html-eslint/parser");
+const { NODE_TYPES } = require("@blue-water-autonomy/html-eslint-parser");
 const { RULE_CATEGORY } = require("../../constants");
 const {
   splitToLineNodes,

@@ -1,4 +1,4 @@
-import { SyntaxConfig } from "@html-eslint/template-syntax-parser";
+import { SyntaxConfig } from "@blue-water-autonomy/html-eslint-template-syntax-parser";
 
 export type ParserOptions = {
   templateEngineSyntax?: SyntaxConfig;

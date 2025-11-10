@@ -1,4 +1,4 @@
-const { TEMPLATE_ENGINE_SYNTAX } = require("@html-eslint/parser");
+const { TEMPLATE_ENGINE_SYNTAX } = require("@blue-water-autonomy/html-eslint-parser");
 module.exports = {
     overrides: [
         {
@@ -13,7 +13,7 @@ module.exports = {
         },
         {
             files: ["**/*.html"],
-            parser: "@html-eslint/parser",
+            parser: "@blue-water-autonomy/html-eslint-parser",
             parserOptions: {
                 templateEngineSyntax: TEMPLATE_ENGINE_SYNTAX.HANDLEBAR
             },
@@ -26,7 +26,7 @@ module.exports = {
         },
         {
             files: ["**/*.html"],
-            parser: "@html-eslint/parser",
+            parser: "@blue-water-autonomy/html-eslint-parser",
             parserOptions: {
                 frontmatter: true,
             },

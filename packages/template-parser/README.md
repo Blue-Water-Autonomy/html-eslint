@@ -1,11 +1,11 @@
-# @html-eslint/template-parser
+# @blue-water-autonomy/html-eslint-template-parser
 
 A parser that parses the html written inside a template literal.
 
 ## Usage
 
 ```js
-const { parse } = require("@html-eslint/template-parser");
+const { parse } = require("@blue-water-autonomy/html-eslint-template-parser");
 const espree = require("espree");
 const { SourceCode } = require("eslint");
 

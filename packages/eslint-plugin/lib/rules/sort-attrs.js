@@ -1,5 +1,5 @@
 /**
- * @import {Attribute} from "@html-eslint/types"
+ * @import {Attribute} from "@blue-water-autonomy/html-eslint-types"
  * @import {
  *   RuleFixer,
  *   RuleModule

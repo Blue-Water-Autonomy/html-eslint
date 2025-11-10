@@ -1,5 +1,5 @@
 /**
- * @import {TemplateLiteral} from "@html-eslint/types"
+ * @import {TemplateLiteral} from "@blue-water-autonomy/html-eslint-types"
  * @import {SourceCode} from "eslint"
  * @import {TemplateHTMLVisitor} from "./types"
  */

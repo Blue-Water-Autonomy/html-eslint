@@ -1,4 +1,4 @@
-# `@html-eslint/eslint-plugin`
+# `@blue-water-autonomy/html-eslint-plugin`
 
 An ESLint plugin which provides lint rules for HTML.
 

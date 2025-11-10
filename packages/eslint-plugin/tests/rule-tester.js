@@ -65,7 +65,7 @@ module.exports = function createRuleTester(parser) {
     return new RuleTester({
       languageOptions: !parser
         ? {
-            parser: require("@html-eslint/parser"),
+            parser: require("@blue-water-autonomy/html-eslint-parser"),
           }
         : {
             parserOptions: {

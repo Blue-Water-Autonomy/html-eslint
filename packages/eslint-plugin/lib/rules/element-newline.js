@@ -4,7 +4,7 @@
  *   CloseTag,
  *   OpenTagEnd,
  *   Text
- * } from "@html-eslint/types"
+ * } from "@blue-water-autonomy/html-eslint-types"
  * @import {
  *   Line,
  *   RuleModule

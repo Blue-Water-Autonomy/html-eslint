@@ -31,7 +31,7 @@ import type {
   StyleTagContent,
   Tag,
   Text,
-} from "@html-eslint/types";
+} from "@blue-water-autonomy/html-eslint-types";
 import { NodeTypes } from "es-html-parser";
 
 type PostFix<T, S extends string> = {

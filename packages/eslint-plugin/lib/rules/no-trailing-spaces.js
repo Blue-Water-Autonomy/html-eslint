@@ -2,7 +2,7 @@
  * @import {
  *   CommentContent,
  *   Text
- * } from "@html-eslint/types"
+ * } from "@blue-water-autonomy/html-eslint-types"
  * @import {RuleModule} from "../types"
  */
 

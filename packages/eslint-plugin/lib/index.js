@@ -8,7 +8,7 @@ const { templRules } = require("./configs/templ");
 const { HTMLLanguage } = require("./languages/html-language");
 const { name, version } = require("../package.json");
 const templProcessor = require("./processors/templ");
-const parser = require("@html-eslint/parser");
+const parser = require("@blue-water-autonomy/html-eslint-parser");
 /** @import {ESLint} from "eslint" */
 
 const plugin = {

@@ -6,11 +6,11 @@
  *   OkParseResult,
  *   ParseResult
  * } from "@eslint/core"
- * @import {ParserOptions} from "@html-eslint/parser"
+ * @import {ParserOptions} from "@blue-water-autonomy/html-eslint-parser"
  * @import {AST} from "eslint"
  */
 
-const { visitorKeys, parseForESLint } = require("@html-eslint/parser");
+const { visitorKeys, parseForESLint } = require("@blue-water-autonomy/html-eslint-parser");
 const { createHTMLSourceCode } = require("./html-source-code");
 
 /**

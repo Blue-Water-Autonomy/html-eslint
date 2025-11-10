@@ -1,6 +1,6 @@
 /**
- * @import {TemplateHTMLVisitor} from "@html-eslint/template-parser"
- * @import {TemplateLiteral} from "@html-eslint/types"
+ * @import {TemplateHTMLVisitor} from "@blue-water-autonomy/html-eslint-template-parser"
+ * @import {TemplateLiteral} from "@blue-water-autonomy/html-eslint-types"
  * @import {
  *   AnyToken,
  *   DocumentNode
@@ -8,7 +8,10 @@
  * @import {SourceCode} from "eslint"
  */
 
-const { parse, traverse } = require("@html-eslint/template-parser");
+const {
+  parse,
+  traverse,
+} = require("@blue-water-autonomy/html-eslint-template-parser");
 
 /**
  * Cache for parsed template literals to avoid re-parsing the same template

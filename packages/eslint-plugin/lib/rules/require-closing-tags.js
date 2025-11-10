@@ -3,7 +3,7 @@
  *   ScriptTag,
  *   StyleTag,
  *   Tag
- * } from "@html-eslint/types"
+ * } from "@blue-water-autonomy/html-eslint-types"
  * @import {RuleModule} from "../types"
  * @typedef {Object} Option
  * @property {"always" | "never"} [Option.selfClosing]

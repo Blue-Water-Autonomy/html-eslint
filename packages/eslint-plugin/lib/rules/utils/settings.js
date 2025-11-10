@@ -2,7 +2,7 @@
  * @import {
  *   TaggedTemplateExpression,
  *   TemplateLiteral
- * } from "@html-eslint/types"
+ * } from "@blue-water-autonomy/html-eslint-types"
  * @import {
  *   Context,
  *   HTMLSettings,

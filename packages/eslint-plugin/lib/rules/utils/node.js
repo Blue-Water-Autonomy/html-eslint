@@ -13,7 +13,7 @@
  *   StyleTag,
  *   Tag,
  *   Text
- * } from "@html-eslint/types"
+ * } from "@blue-water-autonomy/html-eslint-types"
  * @import {AST} from "eslint"
  * @import {
  *   BaseNode,
@@ -21,7 +21,7 @@
  * } from "../../types"
  */
 
-const { NODE_TYPES } = require("@html-eslint/parser");
+const { NODE_TYPES } = require("@blue-water-autonomy/html-eslint-parser");
 
 /**
  * @param {Tag | ScriptTag | StyleTag} node

@@ -1,5 +1,5 @@
 /**
- * @import {AttributeValue} from "@html-eslint/types"
+ * @import {AttributeValue} from "@blue-water-autonomy/html-eslint-types"
  * @import {
  *   RuleModule,
  *   SuggestionReportDescriptor

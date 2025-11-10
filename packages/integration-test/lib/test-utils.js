@@ -44,15 +44,16 @@ async function makePackageJson({
     scripts,
     devDependencies: {
       eslint: eslintVersion,
-      "@html-eslint/eslint-plugin": packageFileVersion("eslint-plugin"),
-      "@html-eslint/parser": packageFileVersion("parser"),
+      "@blue-water-autonomy/html-eslint-plugin":
+        packageFileVersion("eslint-plugin"),
+      "@blue-water-autonomy/html-eslint-parser": packageFileVersion("parser"),
       typescript: ts ? "5.9.3" : undefined,
     },
     resolutions: {
-      "@html-eslint/template-parser": packageFileVersion("template-parser"),
-      "@html-eslint/template-syntax-parser": packageFileVersion(
-        "template-syntax-parser"
-      ),
+      "@blue-water-autonomy/html-eslint-template-parser":
+        packageFileVersion("template-parser"),
+      "@blue-water-autonomy/html-eslint-template-syntax-parser":
+        packageFileVersion("template-syntax-parser"),
     },
   };
   await writeFile(

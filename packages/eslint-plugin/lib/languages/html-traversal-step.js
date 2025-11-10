@@ -1,5 +1,5 @@
 /**
- * @import {AnyHTMLNode} from "@html-eslint/types"
+ * @import {AnyHTMLNode} from "@blue-water-autonomy/html-eslint-types"
  * @import {AST} from "eslint"
  */
 

@@ -1,5 +1,5 @@
 import { defineConfig } from "eslint/config";
-import html from "@html-eslint/eslint-plugin";
+import html from "@blue-water-autonomy/html-eslint-plugin";
 
 defineConfig(html.configs['flat/recommended']);
 
