@@ -1,0 +1,67 @@
+name: Publish to GAR
+
+on:
+  push:
+    tags: ["bwa-v*"]
+  workflow_dispatch:
+    inputs:
+      bump:
+        description: "Lerna bump override (default: auto-detect from-package vs prerelease)"
+        required: false
+        type: string
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref }} # the bwa-v* tag; tags are cut on templ-for-bwa HEAD
+          fetch-depth: 0
+      - name: Install Corepack
+        run: npm install -g corepack
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+      - uses: google-github-actions/auth@v2
+        with:
+          workload_identity_provider: projects/1066481849278/locations/global/workloadIdentityPools/github-actions/providers/github-oidc-bwa-npm
+          # Direct WIF only — no SA impersonation (smoke-verified on AI-920)
+      - uses: google-github-actions/setup-gcloud@v2
+      - name: Install
+        run: yarn install --immutable
+      - name: Configure GAR auth
+        run: |
+          token="$(gcloud auth print-access-token)"
+          {
+            echo "npmScopes:"
+            echo "  blue-water-autonomy:"
+            echo "    npmRegistryServer: \"https://us-central1-npm.pkg.dev/blue-water-autonomy-operations/bwa-npm/\""
+            echo "    npmAuthToken: \"${token}\""
+            echo "    npmAlwaysAuth: true"
+          } > "$HOME/.yarnrc.yml"
+          {
+            echo "@blue-water-autonomy:registry=https://us-central1-npm.pkg.dev/blue-water-autonomy-operations/bwa-npm/"
+            echo "//us-central1-npm.pkg.dev/blue-water-autonomy-operations/bwa-npm/:_authToken=${token}"
+            echo "//us-central1-npm.pkg.dev/blue-water-autonomy-operations/bwa-npm/:always-auth=true"
+          } > .npmrc
+      - name: Determine bump
+        id: bump
+        run: |
+          version="$(jq --raw-output '.version' lerna.json)"
+          if [ -n "${{ inputs.bump }}" ]; then
+            echo "bump=${{ inputs.bump }}" >> "$GITHUB_OUTPUT"; echo "args=" >> "$GITHUB_OUTPUT"
+          elif npm show @blue-water-autonomy/html-eslint-plugin@"${version}" --registry=https://us-central1-npm.pkg.dev/blue-water-autonomy-operations/bwa-npm/ >/dev/null 2>&1; then
+            echo "bump=prerelease" >> "$GITHUB_OUTPUT"; echo "args=--preid bwa" >> "$GITHUB_OUTPUT"
+          else
+            echo "bump=from-package" >> "$GITHUB_OUTPUT"; echo "args=" >> "$GITHUB_OUTPUT"
+          fi
+      - name: Publish
+        run: |
+          yarn lerna publish --no-private ${{ steps.bump.outputs.args }} \
+            --registry=https://us-central1-npm.pkg.dev/blue-water-autonomy-operations/bwa-npm/ \
+            --no-push --no-git-tag-version \
+            ${{ steps.bump.outputs.bump }} --yes
